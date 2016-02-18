@@ -9,4 +9,6 @@ html
     = csrf_meta_tags
   body
     = render 'layouts/header'
+    p#notice = flash[:notice]
+    p#alert = flash[:alert]
     = yield

@@ -6,11 +6,9 @@ div.cotainer
           h1.header_nav-title ぐちろう
           ul.header_list-item
             li.header_list-items ぐちる
-            li.header_list-items 無料会員登録
-            li.header_list-items ログイン
-        / div.header-nav-list
-        /   ul.header_list-item
-        /     li.header_list-items ぐちる
-        /     li.header_list-items 無料会員登録
-        /     li.header_list-items ログイン
-    
+            - if current_user
+              li.header_list-items = link_to '編集', edit_user_path(current_user.id)
+              li.header_list-items = link_to 'ログアウト', :logout, method: :post
+            - else
+              li.header_list-items = link_to '無料会員登録', new_user_path
+              li.header_list-items = link_to 'ログイン', :login
