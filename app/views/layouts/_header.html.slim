@@ -1,9 +1,10 @@
 div.cotainer
   div.row
-    div.col-md-10.col-md-offset-1
+    div.col-md-8.col-md-offset-2
       header
         div.header_nav-container
-          h1.header_nav-title ぐちろう
+          h1.header_nav-title 
+            = link_to 'ぐちろう', root_path
           ul.header_list-item
             li.header_list-items ぐちる
             - if current_user

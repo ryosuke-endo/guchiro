@@ -1,10 +1,10 @@
-= form_tag user_sessions_path, :method => :post do
+= form_tag user_sessions_path, :method => :post, class: 'form-horizontal' do
 
-  div.field
-    = label_tag :email
-    = text_field_tag :email
-  div.field
-    = label_tag :password
-    = password_field_tag :password
-  div.actions
-    = submit_tag 'ログイン'
+  div.form-group
+    div.col-xs-12.col-md-6.col-md-offset-3
+      = text_field_tag :email, '', class: 'form-control', placeholder: 'Email'
+  div.form-group
+    div.col-xs-12.col-md-6.col-md-offset-3
+      = password_field_tag :password, '', class: 'form-control', placeholder: 'パスワード'
+  div.form_actions
+    = submit_tag 'ログイン', id: 'form_submit'
