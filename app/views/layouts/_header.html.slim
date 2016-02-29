@@ -1,4 +1,4 @@
-div.cotainer
+div.container
   div.row
     div.col-md-8.col-md-offset-2
       header
@@ -6,7 +6,8 @@ div.cotainer
           h1.header_nav-title 
             = link_to 'ぐちろう', root_path
           ul.header_list-item
-            li.header_list-items ぐちる
+            li.header_list-items
+             = link_to 'ぐちる', new_grumble_path
             - if current_user
               li.header_list-items = link_to '編集', edit_user_path(current_user.id)
               li.header_list-items = link_to 'ログアウト', :logout, method: :post

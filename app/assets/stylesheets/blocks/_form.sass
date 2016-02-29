@@ -1,24 +1,19 @@
 .form_container-post
-  border: 1px solid $base-blue
   h2
-    text-align: center
-    background: $base-blue
-    color: #fff
-    padding: 10px 0
-    font-size: 16px
-    margin-top: -1px
+    +main_topics
 
 .form-container-block
-  padding: 10px 10px 20px
+  +main_container
 
 #form_submit
-  width: 280px
-  height: 40px
-  padding: 10px
-  line-height: 20px
-  color: #fff
-  background: $base-dark-blue
-  border-style: none
+  +form_button
 
 .form_actions
   text-align: center
+
+.form_container-grumble
+  +main_container
+
+.form_text-grumble
+  height: 100px
+  line-height: 1px

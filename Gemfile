@@ -8,7 +8,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'slim-rails'
 gem 'sorcery'
 gem 'font-awesome-rails'
-
+gem 'kaminari'
 # javascript
 gem 'jquery-rails'
 
