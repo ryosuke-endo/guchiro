@@ -12,7 +12,7 @@ grumble = <<EOS
 ああああああああああああああああああああああああああああああああああああああああああ
 EOS
 
-50.times do |n|
+30.times do |n|
   body = grumble
   Grumble.create(body: body,
                  created_at: n.days.ago,

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :grumbles
+  has_many :cheers
   authenticates_with_sorcery!
 
   validates :password, length: { minimum: 6 }

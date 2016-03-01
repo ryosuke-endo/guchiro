@@ -3,7 +3,14 @@
     p
     = grumble.body
   div.col-xs-2
-    i.fa.fa-thumbs-o-up 応援
+    i.fa.fa-thumbs-o-up.cheer-count = grumble.cheers.count
+    - if current_user.nil?
+      = link_to '応援', grumble_cheers_path(grumble.id), method: :post
+    -else
+      - if current_user.cheers.find_by(grumble_id: grumble.id)
+        = link_to '応援済み', grumble_cheer_path(grumble.id, grumble.cheers.first.id), method: :delete
+      - else
+        = link_to '応援', grumble_cheers_path(grumble.id), method: :post
   div.col-xs-2 
     i.fa.fa-heart 共感
   div.col-xs-2

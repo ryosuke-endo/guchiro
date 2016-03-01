@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :user_sessions
   resources :users
-  resources :grumbles, only: [:index, :new, :create, :destroy]
+  resources :grumbles, only: [:index, :new, :create, :destroy] do
+    resources :cheers, only: [:create, :destroy]
+  end
 
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
