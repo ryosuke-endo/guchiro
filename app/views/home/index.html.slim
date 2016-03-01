@@ -1,21 +1,2 @@
-div.container
-  div.row
-    div.col-md-12
-      ul#tab
-        li.selected
-          a href="#tab1" メイン
-        li
-          a href="#tab2" 履歴
-        li
-          a href="#tab3" お気に入り
-        li
-          a href="#tab4" 人気
-      div#tab-content
-        div#tab1 class="tabbox"
-          = render partial: 'shared/grumble_main', locals: { grumbles: @grumbles }
-        div#tab2 class="tabbox"
-          p テスト2
-        div#tab3 class="tabbox"
-          p テスト3
-        div#tab4 class="tabbox"
-          p テスト4
+= render 'layouts/global_nav'
+= render partial: 'shared/grumble_main', locals: { grumbles: @grumbles }

@@ -23,15 +23,11 @@ ActiveRecord::Schema.define(version: 20160229090541) do
   add_index "grumbles", ["user_id"], name: "index_grumbles_on_user_id"
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",             null: false
+    t.string   "email",            null: false
     t.string   "crypted_password"
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "icon_file_name"
-    t.string   "icon_content_type"
-    t.integer  "icon_file_size"
-    t.datetime "icon_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

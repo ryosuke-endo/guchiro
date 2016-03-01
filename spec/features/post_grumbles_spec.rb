@@ -21,4 +21,20 @@ RSpec.feature "PostGrumbles", type: :feature do
     click_button 'ぐちを投稿'
     expect(page).to have_selector('#error_explanation')
   end
+
+  it 'user grumble post is only login user showing grumble post' do
+    user = create(:mikami)
+    other_user = create(:ayu)
+    login(user)
+    text = 'Rspecのテスト'
+    visit new_grumble_path
+    fill_in 'grumble[body]', with: text
+    click_button 'ぐちを投稿'
+    visit grumbles_path
+    expect(page).to have_content(text)
+    logout
+    login(other_user)
+    visit grumbles_path
+    expect(page).not_to have_content(text)
+  end
 end

@@ -15,5 +15,6 @@ EOS
 50.times do |n|
   body = grumble
   Grumble.create(body: body,
-                 created_at: n.days.ago)
+                 created_at: n.days.ago,
+                 user_id: 1)
 end
