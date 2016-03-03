@@ -6,4 +6,5 @@ ul#tab
   li
     a href="#tab3" お気に入り
   li
-    a href="#tab4" マイページ
+    - if !current_user.nil?
+      = link_to 'マイページ', user_path(current_user)

@@ -18,3 +18,6 @@ EOS
                  created_at: n.days.ago,
                  user_id: 1)
 end
+
+User.create(email: 'admin@guchiro.com',
+            password: 'password')

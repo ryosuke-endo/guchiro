@@ -34,7 +34,6 @@ RSpec.feature "PostSympaties", type: :feature do
   it 'redirect current_path when user click sympathy button in grumble comment show page' do
     login(@user)
     grumble = Grumble.last
-    save_and_open_page
     click_on 'コメント', match: :first
     click_link '共感'
     expect(current_path).to eq grumble_path(grumble.id)

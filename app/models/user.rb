@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :grumbles
+  has_many :grumbles, dependent: :destroy
   has_many :cheers
   has_many :sympathies
   has_many :comments
@@ -13,4 +13,12 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
 
   validates :email, uniqueness: true
+
+  def cheered_count
+    grumbles.joins(:cheers).count
+  end
+
+  def sympathied_count
+    grumbles.joins(:sympathies).count
+  end
 end
