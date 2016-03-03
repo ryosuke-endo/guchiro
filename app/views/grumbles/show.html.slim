@@ -1,0 +1,4 @@
+= render 'layouts/global_nav'
+= render 'grumble', { grumbles: @grumbles}
+= render @comments
+= render 'comments/comment_form', { comment: @comment }

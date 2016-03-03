@@ -1,5 +1,5 @@
 class GrumblesController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: [:new, :show, :create]
 
   def index
     @user = current_user
@@ -8,6 +8,12 @@ class GrumblesController < ApplicationController
 
   def new
     @grumble = Grumble.new
+  end
+
+  def show
+    @grumble = Grumble.find_by(id: params[:id])
+    @comment = @grumble.comments.new
+    @comments = @grumble.comments.includes(:grumble)
   end
 
   def create

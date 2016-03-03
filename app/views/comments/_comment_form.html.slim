@@ -1,0 +1,11 @@
+div.main_container-comment
+  = form_for comment, url: grumble_comments_path(@grumble), html: { class: 'form-horizontal' } do |f|
+    - if comment.errors.any?
+      #error_explanation
+      ul
+        - @grumble.errors.full_messages.each do |message|
+          li = message
+    div.form-group
+      div.col-xs-12
+        = f.text_area :body, class: 'form-control', row: 4, placeholder: '気軽に話しかけてみましょう'
+    .form_actions = f.submit 'コメントを投稿', id: 'form_submit'

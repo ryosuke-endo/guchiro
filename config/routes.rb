@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   root 'home#index'
   resources :user_sessions
   resources :users
-  resources :grumbles, only: [:index, :new, :create, :destroy] do
+  resources :grumbles, only: [:index, :show, :new, :create, :destroy] do
     resources :cheers, only: [:create, :destroy]
+    resources :comments, only: [:new, :create, :destroy]
   end
 
   get 'login' => 'user_sessions#new', :as => :login
