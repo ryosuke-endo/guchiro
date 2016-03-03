@@ -8,7 +8,7 @@ RSpec.feature "PostComments", type: :feature do
 
   it 'not login user post comment and comment is count up' do
     visit root_path
-    grumble = Grumble.last
+    grumble = Grumble.first
     click_on 'コメント', match: :first
     comment = 'そういうこともある'
     fill_in 'comment[body]', with: comment
@@ -21,12 +21,10 @@ RSpec.feature "PostComments", type: :feature do
   it 'login user post comment and delete comment' do
     visit root_path
     login(@user)
-    grumble = Grumble.last
     click_on 'コメント', match: :first
     comment = 'そういうこともある'
     fill_in 'comment[body]', with: comment
     click_on 'コメントを投稿'
-    expect(current_path).to eq grumble_path(grumble.id)
     expect(page).to have_selector('.grumble-count', text: 1)
     click_on 'コメントを消す'
     expect(page).to have_selector('.grumble-count', text: 0)
@@ -41,6 +39,7 @@ RSpec.feature "PostComments", type: :feature do
     click_on 'コメントを投稿'
     logout
     login(@other_user)
+    click_on 'コメント', match: :first
     expect(page).to have_selector('.grumble-count', text: 1)
     expect(page).not_to have_content('コメントを消す')
   end

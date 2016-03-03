@@ -1,15 +1,20 @@
 class CheersController < ApplicationController
+  before_action :set_cheer, only: [:create, :destroy]
+
   def create
-    @grumble = Grumble.find(params[:grumble_id])
     cheer = current_user.cheers.build(grumble_id: @grumble.id)
     cheer.save
-    redirect_to root_url
+    redirect_to(:back)
   end
 
   def destroy
-    @grumble = Grumble.find(params[:grumble_id])
     cheer = current_user.cheers.find_by(grumble_id: @grumble.id)
     cheer.destroy
-    redirect_to root_url
+    redirect_to(:back)
   end
+
+  private
+    def set_cheer
+      @grumble = Grumble.find(params[:grumble_id])
+    end
 end

@@ -15,11 +15,6 @@ FactoryGirl.define do
     factory :ayu do
       id 2
       email 'testtest2@gmail.co.jp'
-
-      after(:create) do |user|
-        create :post, user: user
-        create :muri, user: user
-      end
     end
   end
 end

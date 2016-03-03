@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :users
   resources :grumbles, only: [:index, :show, :new, :create, :destroy] do
     resources :cheers, only: [:create, :destroy]
-    resources :comments, only: [:new, :create, :destroy]
+    resources :comments, only: [:create, :destroy]
+    resources :sympathies, only: [:create, :destroy]
   end
 
   get 'login' => 'user_sessions#new', :as => :login
