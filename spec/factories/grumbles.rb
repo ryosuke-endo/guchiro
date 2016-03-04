@@ -35,5 +35,11 @@ FactoryGirl.define do
       created_at 20.minutes.ago
       association :user, factory: :ayu
     end
+
+    factory :tsukareta do
+      body '疲れたわん'
+      user_id 2
+      created_at 1.minutes.ago
+    end
   end
 end

@@ -8,11 +8,8 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    = render 'layouts/header'
-    div.container
-      div.row
-        div.col-md-12
-          p#notice = flash[:notice]
-          p#alert = flash[:alert]
-          = yield
-          = render 'layouts/fotter'
+    = render 'layouts/global_nav'
+    = yield
+    p#notice = flash[:notice]
+    p#alert = flash[:alert]
+    = render 'layouts/fotter'

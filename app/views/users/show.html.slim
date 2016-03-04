@@ -1,24 +1,24 @@
 p#notice = notice
-= render 'layouts/global_nav'
-div.main_container
-  div.mypage_description
-    ul.list-group
-      li.list-group-item.active 活動履歴
-      li.list-group-item
-        span.badge = @user.grumbles.count
-        | ぐち投稿数
-      li.list-group-item
-        span.badge = @user.cheers.count
-        | 応援数
-      li.list-group-item
-        span.badge = @user.sympathies.count
-        | 共感数
-      li.list-group-item
-        span.badge = @user.comment_grumbles.count
-        | コメントしたぐち
-      li.list-group-item
-        span.badge = @user.cheered_count
-        | もらった応援数
-      li.list-group-item
-        span.badge = @user.sympathied_count
-        | もらった共感数
+.container
+  .row
+    .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+      ul.list-group
+        li.list-group-item.active 活動履歴
+        li.list-group-item
+          span.badge = @user.grumbles.count
+          | ぐち投稿数
+        li.list-group-item
+          span.badge = @user.cheers.count
+          | 応援数
+        li.list-group-item
+          span.badge = @user.sympathies.count
+          | 共感数
+        li.list-group-item
+          span.badge = @user.comment_grumbles.count
+          | コメントしたぐち
+        li.list-group-item
+          span.badge = @user.cheered_count
+          | もらった応援数
+        li.list-group-item
+          span.badge = @user.sympathied_count
+          | もらった共感数

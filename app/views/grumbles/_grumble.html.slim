@@ -1,31 +1,13 @@
-div.main_container
-  div.grumble_description
-    div.col-xs-11.col-xs-offset-1
-      div.grumble_time
-        | 投稿日：
-        i.fa.fa-clock-0 = @grumble.created_at.strftime("%Y年 %m月 %d日 %H:%M")
-      p = @grumble.body
-    div.col-xs-3.grumble_cheer.text-center
-      div.cheer-count = @grumble.cheers.count
-      div.cheer-message
-        - if current_user.nil?
-          = link_to '応援', grumble_cheers_path(@grumble.id), method: :post
-        -else
-          - if current_user.cheers.find_by(grumble_id: @grumble.id)
-            = link_to '応援済み', grumble_cheer_path(@grumble.id, @grumble.cheers.first.id), method: :delete
-          - else
-            = link_to '応援', grumble_cheers_path(@grumble.id), method: :post
-    div.col-xs-3.grumble_sympathy.text-center
-      div.sympathy-count = @grumble.sympathies.count
-      div.sympathy-message
-        - if current_user.nil?
-          = link_to '共感', grumble_sympathies_path(@grumble.id), method: :post
-        - else
-          - if current_user.sympathies.find_by(grumble_id: @grumble.id)
-            = link_to '共感済み', grumble_sympathy_path(@grumble.id, @grumble.sympathies.first.id), method: :delete
-          - else
-            = link_to '共感', grumble_sympathies_path(@grumble.id), method: :post
-    div.col-xs-3.grumble_comment.text-center
-      div.grumble-count = @grumble.comments.count
-      div.comment-message
-        = link_to 'コメント', grumble_path(@grumble)
+.container
+  .row
+    .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+      .post-preview
+        p.post-meta
+          | 投稿日：
+          = @grumble.created_at.strftime("%Y年 %m月 %d日 %H:%M")
+        h3.post-subtitle = @grumble.body
+        div.various-button_container
+          = render partial: 'shared/cheer_count', locals: { grumble: @grumble }
+          = render partial: 'shared/sympathy_count', locals: { grumble: @grumble }
+          = render partial: 'shared/comment_count', locals: { grumble: @grumble }
+      hr

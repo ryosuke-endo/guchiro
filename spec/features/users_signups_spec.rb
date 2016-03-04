@@ -7,7 +7,7 @@ RSpec.feature "UsersSignups", type: :feature do
     fill_in 'user[password]', with: 'password'
     fill_in 'user[password_confirmation]', with: 'password'
     click_on '送信'
-    expect(page).to have_content('マイページ')
+    expect(page).to have_content('ログアウト')
     expect(current_path).to eq user_path(1)
   end
 

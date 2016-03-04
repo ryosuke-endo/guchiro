@@ -32,11 +32,11 @@ RSpec.feature "PostCheers", type: :feature do
   end
 
   it 'redirect current_path when user click cheer button in grumble comment show page' do
+    grumble = create(:tsukareta)
     login(@user)
-    grumble = Grumble.last
     click_on 'コメント', match: :first
     click_link '応援'
-    expect(current_path).to eq grumble_path(grumble.id)
+    expect(current_path).to eq grumble_path(grumble)
     expect(page).to have_selector('.cheer-count', text: 1)
     click_link '応援済み'
     expect(page).to have_selector('.cheer-count', text: 0)

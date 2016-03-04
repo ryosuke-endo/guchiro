@@ -1,0 +1,11 @@
+div.col-xs-4.grumble_sympathy.text-center
+  div.sympathy-count
+    = grumble.sympathies.count
+    |
+    - if current_user.nil?
+      = link_to '共感', grumble_sympathies_path(grumble.id), method: :post
+    - else
+      - if current_user.sympathies.find_by(grumble_id: grumble.id)
+        = link_to '共感済み', grumble_sympathy_path(grumble.id, grumble.sympathies.first.id), method: :delete
+      - else
+        = link_to '共感', grumble_sympathies_path(grumble.id), method: :post
