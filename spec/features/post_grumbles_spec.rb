@@ -1,18 +1,16 @@
 require 'rails_helper'
 
 RSpec.feature "PostGrumbles", type: :feature do
-  before do
-    create_list(:grumble, 30)
-  end
 
   it 'grumble post is success' do
     visit new_grumble_path
     text = 'ふひひ'
     fill_in 'grumble[body]', with: text
     click_button 'ぐちを投稿'
-    first_grumble = Grumble.last.body
+    grumble = Grumble.first
+    expect(grumble.anonymous_digest).to be_truthy
     expect(current_url).to eq root_url
-    expect(page).to have_content(first_grumble)
+    expect(page).to have_content(text)
   end
 
   it 'grumble post is unsuccess' do

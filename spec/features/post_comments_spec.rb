@@ -10,20 +10,22 @@ RSpec.feature "PostComments", type: :feature do
     grumble = create(:tsukareta)
     visit root_path
     click_on 'コメント', match: :first
-    comment = 'そういうこともある'
-    fill_in 'comment[body]', with: comment
+    text = 'そういうこともある'
+    fill_in 'comment[body]', with: text
     click_on 'コメントを投稿'
+    comment = Comment.first
+    expect(comment.anonymous_digest).to be_truthy
     expect(current_path).to eq grumble_path(grumble)
     expect(page).to have_selector('.grumble-count', text: 1)
-    expect(page).to have_content(comment)
+    expect(page).to have_content(text)
   end
 
   it 'login user post comment and delete comment' do
     visit root_path
     login(@user)
     click_on 'コメント', match: :first
-    comment = 'そういうこともある'
-    fill_in 'comment[body]', with: comment
+    text = 'そういうこともある'
+    fill_in 'comment[body]', with: text
     click_on 'コメントを投稿'
     expect(page).to have_selector('.grumble-count', text: 1)
     click_on 'コメントを消す'
@@ -34,8 +36,8 @@ RSpec.feature "PostComments", type: :feature do
     visit root_path
     login(@user)
     click_on 'コメント', match: :first
-    comment = 'そういうこともある'
-    fill_in 'comment[body]', with: comment
+    text = 'そういうこともある'
+    fill_in 'comment[body]', with: text
     click_on 'コメントを投稿'
     logout
     login(@other_user)

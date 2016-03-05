@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303002839) do
+ActiveRecord::Schema.define(version: 20160305055029) do
 
   create_table "cheers", force: :cascade do |t|
     t.integer  "user_id"
@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(version: 20160303002839) do
     t.text     "body"
     t.integer  "user_id"
     t.integer  "grumble_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "anonymous_digest"
   end
 
   add_index "comments", ["grumble_id"], name: "index_comments_on_grumble_id"
@@ -37,8 +38,9 @@ ActiveRecord::Schema.define(version: 20160303002839) do
   create_table "grumbles", force: :cascade do |t|
     t.text     "body"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "anonymous_digest"
   end
 
   add_index "grumbles", ["user_id"], name: "index_grumbles_on_user_id"
