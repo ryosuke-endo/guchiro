@@ -29,8 +29,8 @@ FactoryGirl.define do
       association :user, factory: :ayu
     end
 
-    factory :muri do
-      body '>_<'
+    factory :muritag do
+      body '#愚痴 #仕事 >_<'
       user_id 2
       created_at 20.minutes.ago
       association :user, factory: :ayu

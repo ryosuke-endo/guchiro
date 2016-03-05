@@ -9,6 +9,7 @@ gem 'slim-rails'
 gem 'sorcery'
 gem 'font-awesome-rails'
 gem 'kaminari'
+gem 'acts-as-taggable-on', '~> 3.4'
 # javascript
 gem 'jquery-rails'
 
