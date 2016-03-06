@@ -5,6 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+User.create(email: 'admin@guchiro.com',
+            password: 'password')
+
 grumble = <<EOS
 ああああああああああああああああああああああああああああああああああああああああああ
 ああああああああああああああああああああああああああああああああああああああああああ
@@ -18,6 +21,3 @@ EOS
                  created_at: n.days.ago,
                  user_id: 1)
 end
-
-User.create(email: 'admin@guchiro.com',
-            password: 'password')
