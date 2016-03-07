@@ -9,13 +9,13 @@ class ApplicationController < ActionController::Base
       redirect_to login_path, alert: 'Please login first'
     end
 
-    def get_anonymous_name
+    def anonymous_name
       user_ip = request.ip
       day = Date.today.to_s
       anonymous_name = user_ip + day
     end
 
-    def get_anonymous_digest(anonymous_name, character_length)
-      anonymous_digest = Digest::MD5.hexdigest(anonymous_name).slice(0..character_length)
+    def anonymous_digest(anonymous_name, character_length)
+      anonymous_digest = Digest::SHA512.hexdigest(anonymous_name).slice(0..character_length)
     end
 end

@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
     end
 
     def set_anonymous_digest
-      @comment_anonymous_name = get_anonymous_name
-      @comment_anonymous_digest = get_anonymous_digest(@comment_anonymous_name, 8)
+      @comment_anonymous_name = anonymous_name
+      @comment_anonymous_digest = anonymous_digest(@comment_anonymous_name, 8)
     end
 end

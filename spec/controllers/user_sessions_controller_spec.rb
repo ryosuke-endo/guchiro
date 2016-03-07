@@ -16,10 +16,12 @@ RSpec.describe UserSessionsController, type: :controller do
     end
   end
 
-  describe "GET #destroy" do
-    it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
+  describe "POST #destroy" do
+    it "redirect to root path" do
+      user = create(:mikami)
+      login_user(user)
+      post :destroy, id: user
+      expect(response).to redirect_to root_path
     end
   end
 

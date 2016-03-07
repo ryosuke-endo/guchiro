@@ -37,8 +37,8 @@ class GrumblesController < ApplicationController
     end
 
     def set_anonymous_digest
-      @grumble_anonymous_name = get_anonymous_name
-      @grumble_anonymous_digest = get_anonymous_digest(@grumble_anonymous_name, 8)
+      @grumble_anonymous_name = anonymous_name
+      @grumble_anonymous_digest = anonymous_digest(@grumble_anonymous_name, 8)
     end
 
     def find_hash_tag
