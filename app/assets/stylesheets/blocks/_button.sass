@@ -1,0 +1,32 @@
+.cheer-count
+  +count_button
+  &::before, &::after
+    +count_button_before_after
+.cheer-count-link
+  +count_button-link
+  background-color: $base-green
+  &:hover
+    +count_button-link-hover
+    background-color: $base-green-hover
+
+.sympathy-count
+  +count_button
+  &::before, &::after
+    +count_button_before_after
+.sympathy-count-link
+  +count_button-link
+  background-color: $base-light-green
+  &:hover
+    +count_button-link-hover
+    background-color: $base-light-green-hover
+
+.grumble-comment_count
+  +count_button
+  &::before, &::after
+    +count_button_before_after
+.grumble-comment_count-link
+  +count_button-link
+  background-color: $base-orange
+  &:hover
+    +count_button-link-hover
+    background-color: $base-orange-hover

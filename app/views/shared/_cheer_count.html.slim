@@ -1,11 +1,9 @@
-div.col-xs-4.grumble_cheer.text-center
-  div.cheer-count
-    = grumble.cheers.count
-    |
+.col-xs-4.grumble_cheer.text-center
+  .cheer-count.button
     - if current_user.nil?
-      = link_to '応援', grumble_cheers_path(grumble.id), method: :post
+      = link_to "#{grumble.cheers.count}応援", grumble_cheers_path(grumble.id), method: :post, class: 'cheer-count-link'
     -else
       - if current_user.cheers.find_by(grumble_id: grumble.id)
-        = link_to '応援済み', grumble_cheer_path(grumble.id, grumble.cheers.first.id), method: :delete
+        = link_to "#{grumble.cheers.count}応援済み", grumble_cheer_path(grumble.id, grumble.cheers.first.id), method: :delete, class: 'cheer-count-link'
       - else
-        = link_to '応援', grumble_cheers_path(grumble.id), method: :post
+        = link_to "#{grumble.cheers.count}応援", grumble_cheers_path(grumble.id), method: :post, class: 'cheer-count-link'

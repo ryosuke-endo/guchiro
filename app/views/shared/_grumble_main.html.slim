@@ -7,7 +7,8 @@
             | 投稿日：
             = grumble.created_at.strftime("%Y年 %m月 %d日 %H:%M")
             |
-            = render partial: 'shared/grumble_tag_list', locals: { grumble: grumble }
+            ul
+              = render partial: 'shared/grumble_tag_list', locals: { grumble: grumble }
           h3.post-subtitle = grumble.body
           div.various-button_container
             = render partial: 'shared/cheer_count', locals: { grumble: grumble }

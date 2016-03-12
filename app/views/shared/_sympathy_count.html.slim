@@ -1,11 +1,9 @@
-div.col-xs-4.grumble_sympathy.text-center
-  div.sympathy-count
-    = grumble.sympathies.count
-    |
-    - if current_user.nil?
-      = link_to '共感', grumble_sympathies_path(grumble.id), method: :post
+.col-xs-4.grumble_sympathy.text-center
+  .sympathy-count.button
+  - if current_user.nil?
+    = link_to "#{grumble.sympathies.count}共感", grumble_sympathies_path(grumble.id), method: :post, class: 'sympathy-count-link'
+  - else
+    - if current_user.sympathies.find_by(grumble_id: grumble.id)
+      = link_to "#{grumble.sympathies.count}共感済み", grumble_sympathy_path(grumble.id, grumble.sympathies.first.id), method: :delete, class: 'sympathy-count-link'
     - else
-      - if current_user.sympathies.find_by(grumble_id: grumble.id)
-        = link_to '共感済み', grumble_sympathy_path(grumble.id, grumble.sympathies.first.id), method: :delete
-      - else
-        = link_to '共感', grumble_sympathies_path(grumble.id), method: :post
+      = link_to "#{grumble.sympathies.count}共感", grumble_sympathies_path(grumble.id), method: :post, class: 'sympathy-count-link'
