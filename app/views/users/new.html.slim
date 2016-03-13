@@ -1,2 +1,17 @@
-p 新規会員登録
-== render 'form'
+.container
+  .row
+    .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+      .col-xs-12.col-md-6
+        == render 'form'
+      .col-xs-12.col-md-6
+        .user_registration
+          i.fa.fa-user 
+          p ぐちろうメンバーになる
+        .user_registration-description
+          p ぐちろうでは、あなたのぐちを待っております。
+          | 毎日の生活の中でストレスがたまっていては人生疲れてしまいます。
+          | ぐちを吐いてスッキリした1日になることを願っております。
+          br
+          | 会員登録をすることで、
+          span.user_registration-histroy 自分の投稿の履歴を残し、応援・共感する
+          | ことができるようになります。

@@ -2,23 +2,40 @@ p#notice = notice
 .container
   .row
     .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
-      ul.list-group
-        li.list-group-item.active 活動履歴
-        li.list-group-item
-          span.badge = @user.grumbles.count
-          | ぐち投稿数
-        li.list-group-item
-          span.badge = @user.cheers.count
-          | 応援数
-        li.list-group-item
-          span.badge = @user.sympathies.count
-          | 共感数
-        li.list-group-item
-          span.badge = @user.comment_grumbles.count
-          | コメントしたぐち
-        li.list-group-item
-          span.badge = @user.cheered_count
-          | もらった応援数
-        li.list-group-item
-          span.badge = @user.sympathied_count
-          | もらった共感数
+      .row.mypage_history
+          .col-xs-4.text-center
+            .mypage_content
+              p.mypage_content-title ぐち投稿数
+              .mypage_description-grumble
+                i.fa.fa-pencil-square-o
+                span.mypage_count = @user.grumbles.count
+          .col-xs-4.text-center
+            .mypage_content
+              p.mypage_content-title 応援数
+              .mypage_description-cheer
+                i.fa.fa-thumbs-o-up
+                span.mypage_count = @user.cheers.count
+          .col-xs-4.text-center
+            .mypage_content
+              p.mypage_content-title 共感数
+              .mypage_description-sympathy
+                i.fa.fa-heart
+                span.mypage_count = @user.sympathies.count
+          .col-xs-4.text-center
+            .mypage_content
+              p.mypage_content-title コメントしたぐち
+              .mypage_description-comment
+                i.fa.fa-pencil-square-o
+                span.mypage_count = @user.comment_grumbles.count
+          .col-xs-4.text-center
+            .mypage_content
+              p.mypage_content-title もらった応援数
+              .mypage_description-cheer
+                i.fa.fa-thumbs-o-up
+                span.mypage_count = @user.cheered_count
+          .col-xs-4.text-center
+            .mypage_content
+              p.mypage_content-title もらった共感数
+              .mypage_description-sympathy
+                i.fa.fa-heart
+                span.mypage_count = @user.sympathied_count

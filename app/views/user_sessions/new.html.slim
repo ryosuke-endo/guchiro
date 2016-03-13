@@ -1,5 +1,18 @@
-div.form_container-post
-  h2 ログイン
-  div.form-container-block
-
-    = render 'form'
+.container
+  .row
+    .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+      .col-xs-12.col-md-7
+        .user_login
+          p まだメンバーでない方は・・・
+        .user_login-description
+          p.user_login-recruit ぐちろうのメンバーになろう！
+          p 
+          | メンバーになると、
+          span.user_registration-histroy 自分の投稿の履歴を残し、
+          br
+          span.user_registration-histroy 応援・共感する
+          | ことができるようになります。
+        .user_login-recruit-path.text-center
+          = link_to 'ぐちろうメンバーになる', new_user_path
+      .col-xs-12.col-md-5
+        == render 'form'

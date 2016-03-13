@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  root 'grumbles#new'
   resources :user_sessions
-  resources :users
-  resources :grumbles, only: [:index, :show, :new, :create, :destroy] do
+  resources :users do
+    resources :grumbles, only: [:index]
+  end
+  resources :grumbles, only: [:show, :new, :create, :destroy] do
     resources :cheers, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
     resources :sympathies, only: [:create, :destroy]

@@ -1,9 +1,20 @@
 .col-xs-4.grumble_cheer.text-center
-  .cheer-count.button
-    - if current_user.nil?
-      = link_to "#{grumble.cheers.count}応援", grumble_cheers_path(grumble.id), method: :post, class: 'cheer-count-link'
-    -else
-      - if current_user.cheers.find_by(grumble_id: grumble.id)
-        = link_to "#{grumble.cheers.count}応援済み", grumble_cheer_path(grumble.id, grumble.cheers.first.id), method: :delete, class: 'cheer-count-link'
-      - else
-        = link_to "#{grumble.cheers.count}応援", grumble_cheers_path(grumble.id), method: :post, class: 'cheer-count-link'
+  - if current_user.nil?
+    = link_to grumble_cheers_path(grumble.id), method: :post
+      i.fa.fa-thumbs-o-up
+      span.cheer_count
+        = grumble.cheers.count
+      | 応援する
+  - else
+    - if current_user.cheers.find_by(grumble_id: grumble.id)
+      = link_to grumble_cheer_path(grumble.id, grumble.cheers.first.id), method: :delete, class: 'grumble_cheer-active'
+        i.fa.fa-thumbs-o-up
+        span.cheer_count
+          = grumble.cheers.count
+        | 応援済み
+    - else
+      = link_to grumble_cheers_path(grumble.id), method: :post
+        i.fa.fa-thumbs-o-up
+        span.cheer_count
+          = grumble.cheers.count
+        | 応援する

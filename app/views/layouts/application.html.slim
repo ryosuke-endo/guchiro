@@ -9,7 +9,8 @@ html
     = csrf_meta_tags
   body
     = render 'layouts/global_nav'
-    = yield
-    p#notice = flash[:notice]
-    p#alert = flash[:alert]
+    .main_conatiner
+      = yield
+      p#notice = flash[:notice]
+      p#alert = flash[:alert]
     = render 'layouts/fotter'

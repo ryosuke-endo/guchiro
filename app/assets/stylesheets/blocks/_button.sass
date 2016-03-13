@@ -1,32 +1,44 @@
-.cheer-count
-  +count_button
-  &::before, &::after
-    +count_button_before_after
-.cheer-count-link
-  +count_button-link
+.grumble-button, .comment-button
+  width: 200px
+  height: 40px
+  margin: 0 0 5px 0
+  border-radius: 5px
   background-color: $base-green
+  box-shadow: 0 5px $base-dark-green
+  border: none
+  color: #fff
+  padding: 10px 0
   &:hover
-    +count_button-link-hover
-    background-color: $base-green-hover
+    margin: 5px 0 0 0
+    box-shadow: none
+.disabled
+  opacity: 0.6
 
-.sympathy-count
-  +count_button
-  &::before, &::after
-    +count_button_before_after
-.sympathy-count-link
-  +count_button-link
-  background-color: $base-light-green
+.registration-button, .login-button
+  background: $base-green
+  border: none
+  color: #fff
+  padding: 10px 16px
   &:hover
-    +count_button-link-hover
-    background-color: $base-light-green-hover
+    opacity: 0.8
 
-.grumble-comment_count
-  +count_button
-  &::before, &::after
-    +count_button_before_after
-.grumble-comment_count-link
-  +count_button-link
-  background-color: $base-orange
+.grumble_cheer-active
+  color: $base-dark-blue
+  font-weight: bold
   &:hover
-    +count_button-link-hover
-    background-color: $base-orange-hover
+    color: $base-dark-blue
+    text-decoration: none
+
+.grumble_sympathy-active
+  color: $base-pink
+  font-weight: bold
+  &:hover
+    color: $base-pink
+    text-decoration: none
+
+.grumble_cheer, .grumble_sympathy, .grumble_comment
+  padding: 5px 0 15px 0
+  border-bottom: 5px solid $base-light-green
+  &:hover
+    margin-bottom: -5px
+    border-bottom: 5px solid #4AA4A9

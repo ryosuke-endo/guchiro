@@ -3,16 +3,21 @@
     .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
       - grumbles.each do |grumble|
         .post-preview
-          p.post-meta
-            | 投稿日：
-            = grumble.created_at.strftime("%Y年 %m月 %d日 %H:%M")
-            |
-            ul
-              = render partial: 'shared/grumble_tag_list', locals: { grumble: grumble }
-          h3.post-subtitle = grumble.body
-          div.various-button_container
-            = render partial: 'shared/cheer_count', locals: { grumble: grumble }
-            = render partial: 'shared/sympathy_count', locals: { grumble: grumble }
-            = render partial: 'shared/comment_count', locals: { grumble: grumble }
-        hr
-  = paginate grumbles
+          .row
+            .col-xs-2
+              ul.tag_lists
+                = render partial: 'shared/grumble_tag_list', locals: { grumble: grumble }
+            .col-xs-10
+              p.post-meta
+                | 投稿日:
+                = grumble.created_at.strftime("%Y年%m月%d日%H:%M")
+                |
+                span.grumble_id ID:
+                |
+                = grumble.anonymous_digest
+              h2.post-subtitle = grumble.body
+              = render partial: 'shared/cheer_count', locals: { grumble: grumble }
+              = render partial: 'shared/sympathy_count', locals: { grumble: grumble }
+              = render partial: 'shared/comment_count', locals: { grumble: grumble }
+      .grumble_paginavigation
+        = paginate grumbles

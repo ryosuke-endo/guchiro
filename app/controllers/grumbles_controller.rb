@@ -10,6 +10,7 @@ class GrumblesController < ApplicationController
 
   def new
     @grumble = Grumble.new
+    @grumbles = Grumble.order(created_at: :desc).page(params[:page])
   end
 
   def show
@@ -26,7 +27,7 @@ class GrumblesController < ApplicationController
     if @grumble.save
       redirect_to root_url
     else
-      render 'grumbles/new'
+      redirect_to root_url
     end
   end
 

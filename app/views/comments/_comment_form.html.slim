@@ -1,4 +1,4 @@
-container
+.container
   .row
     .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
       = form_for comment, url: grumble_comments_path(@grumble), html: { class: 'form-horizontal' } do |f|
@@ -7,13 +7,8 @@ container
           ul
             - @grumble.errors.full_messages.each do |message|
               li = message
-        .row.control-group
-          .form-group.col-xs-12.floating-label-form-group.controls
-            = f.text_area :body, class: 'form-control', row: 4, placeholder: '気軽に話しかけてみましょう'
-            p.help-block.text-danger
-        br
-        #success
-        .row
-          .form-group.col-xs-12
-            = f.submit 'コメントを投稿', class: 'button btn btn-default'
-hr
+        .col-xs-12
+          .form-group
+            = f.text_area :body, class: 'form-control', row: 4, placeholder: '励ましたり、共感したことを書きましょう'
+          .form-group.text-center
+            = f.submit 'コメントを投稿', class: 'comment-button'

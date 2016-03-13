@@ -1,3 +1,6 @@
-div.col-xs-4.grumble_comment.text-center
-  div.grumble-comment_count.button
-   = link_to "#{grumble.comments.count}コメント", grumble_path(grumble), class: 'grumble-comment_count-link'
+.col-xs-4.grumble_comment.text-center
+  = link_to grumble_path(grumble)
+    i.fa.fa-comment-o
+    span.comment_count
+      = grumble.comments.count
+    | コメント

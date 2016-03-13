@@ -1,20 +1,18 @@
-container
-  .row
-    .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
-      p ぐちをはいてスッキリしましょう
-      = form_for @grumble, html: { class: 'form-horizontal' } do |f|
-        - if @grumble.errors.any?
-          #error_explanation
-          ul
-            - @grumble.errors.full_messages.each do |message|
-              li = message
-        .row.control-group
-          .form-group.col-xs-12.floating-label-form-group.controls
-            = f.text_area :body, class: 'form-control', rows: 5, placeholder: '気軽にぐちを吐きましょう'
-            p.help-block.text-danger
-        br
-        #success
-        .row
-          .form-group.col-xs-12
-            = f.submit 'ぐちを投稿', class: 'button btn btn-default'
-hr
+.grumble_post-container
+  .container
+    .row
+      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+        = form_for @grumble, html: { class: 'form-horizontal grumble-form' } do |f|
+          - if @grumble.errors.any?
+            #error_explanation
+            ul
+              - @grumble.errors.full_messages.each do |message|
+                li = message
+          .col-xs-12
+            .form-group
+              = f.text_area :body, class: 'form-control grumble-textarea', rows: 4, placeholder: '投稿にハッシュタグをつけてみませんか？例：#仕事 #恋愛'
+            .form-group.col-xs-4
+              = f.submit 'ぐちっとこ', class: 'grumble-button'
+            .textcount-area.col-xs-8.text-right
+              span.textcount 0
+              span.textcount-right &#047;250文字
