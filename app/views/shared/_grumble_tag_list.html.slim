@@ -1,2 +1,3 @@
--if !grumble.tag_list.empty?
-  li.tag_list = grumble.tag_list
+- if tags.present?
+  - tags.each do |tag|
+    li.tag_list = link_to tag.name, tagname_grumbles_path(tag: tag.name), class: 'tag_list_name'

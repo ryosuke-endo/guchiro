@@ -8,7 +8,12 @@ Rails.application.routes.draw do
     resources :cheers, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
     resources :sympathies, only: [:create, :destroy]
+    collection do
+      get 'tag_name' => 'grumbles#tag_list', :as => :tagname
+    end
   end
+
+  resources :tags, only: [:index]
 
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout

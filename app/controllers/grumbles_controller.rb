@@ -1,5 +1,5 @@
 class GrumblesController < ApplicationController
-  skip_before_action :require_login, only: [:new, :show, :create]
+  skip_before_action :require_login, only: [:new, :show, :create, :tag_list]
   before_action :set_anonymous_digest, only: [:create]
   before_action :find_hash_tag, only: [:create]
 
@@ -29,6 +29,11 @@ class GrumblesController < ApplicationController
     else
       redirect_to root_url
     end
+  end
+
+  def tag_list
+    @tag = params[:tag]
+    @grumbles = Grumble.tagged_with(@tag).order(created_at: :desc).page(params[:page])
   end
 
   private

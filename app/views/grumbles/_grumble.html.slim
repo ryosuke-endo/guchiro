@@ -6,7 +6,7 @@
           .row
             .col-xs-2
               ul.tag_lists
-                = render partial: 'shared/grumble_tag_list', locals: { grumble: @grumble }
+                = render partial: 'shared/grumble_tag_list', locals: { tags: @grumble.tags }
             .col-xs-10
               p.post-meta
                 | 投稿日:
