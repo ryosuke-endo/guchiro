@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.feature "PostGrumbles", type: :feature do
 
   it 'grumble post is success' do
-    visit new_grumble_path
+    visit root_path
     text = attributes_for(:tsukareta)
     fill_in 'grumble[body]', with: text[:body]
-    click_button 'ぐちを投稿'
+    find('.grumble-button').click
     grumble = Grumble.first
     expect(grumble.anonymous_digest).to be_truthy
     expect(current_url).to eq root_url
@@ -14,10 +14,11 @@ RSpec.feature "PostGrumbles", type: :feature do
   end
 
   it 'grumble post is unsuccess' do
-    visit new_grumble_path
+    visit root_path
     fill_in 'grumble[body]', with: ''
-    click_button 'ぐちを投稿'
-    expect(page).to have_selector('#error_explanation')
+    expect { find('.grumble-button').click }.not_to change {
+      Grumble.count
+    }
   end
 
   it 'user grumble post is only login user showing grumble post' do
@@ -25,22 +26,22 @@ RSpec.feature "PostGrumbles", type: :feature do
     other_user = create(:ayu)
     login(user)
     text = attributes_for(:tsukareta)
-    visit new_grumble_path
+    visit root_path
     fill_in 'grumble[body]', with: text[:body]
-    click_button 'ぐちを投稿'
-    visit grumbles_path
+    find('.grumble-button').click
+    visit user_grumbles_path(user)
     expect(page).to have_content(text[:body])
     logout
     login(other_user)
-    visit grumbles_path
+    visit user_grumbles_path(other_user)
     expect(page).not_to have_content(text[:body])
   end
 
   it 'user grumble post with hash tag' do
-    visit new_grumble_path
+    visit root_path
     text = attributes_for(:muritag)
     fill_in 'grumble[body]', with: text[:body]
-    click_button 'ぐちを投稿'
-    expect(page).to have_selector('#tag_list', '仕事')
+    find('.grumble-button').click
+    expect(page).to have_selector('.tag_list', '仕事')
   end
 end

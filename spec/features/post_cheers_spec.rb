@@ -15,20 +15,20 @@ RSpec.feature "PostCheers", type: :feature do
   it 'user click cheer button and cheer count up' do
     login(@user)
     click_link '応援', match: :first
-    expect(page).to have_selector('.cheer-count', text: 1)
+    expect(page).to have_selector('.cheer_count', text: 1)
     expect(page).to have_content('応援済み')
     logout
     login(@other_user)
     click_link '応援', match: :first
-    expect(page).to have_selector('.cheer-count', text: 2)
+    expect(page).to have_selector('.cheer_count', text: 2)
   end
 
   it 'user click cheer button and cheer count down' do
     login(@user)
     click_link '応援', match: :first
-    expect(page).to have_selector('.cheer-count', text: 1)
+    expect(page).to have_selector('.cheer_count', text: 1)
     click_link '応援済み'
-    expect(page).to have_selector('.cheer-count', text: 0)
+    expect(page).to have_selector('.cheer_count', text: 0)
   end
 
   it 'redirect current_path when user click cheer button in grumble comment show page' do
@@ -37,8 +37,8 @@ RSpec.feature "PostCheers", type: :feature do
     click_on 'コメント', match: :first
     click_link '応援'
     expect(current_path).to eq grumble_path(grumble)
-    expect(page).to have_selector('.cheer-count', text: 1)
+    expect(page).to have_selector('.cheer_count', text: 1)
     click_link '応援済み'
-    expect(page).to have_selector('.cheer-count', text: 0)
+    expect(page).to have_selector('.cheer_count', text: 0)
   end
 end

@@ -16,7 +16,7 @@ RSpec.feature "PostComments", type: :feature do
     comment = Comment.first
     expect(comment.anonymous_digest).to be_truthy
     expect(current_path).to eq grumble_path(grumble)
-    expect(page).to have_selector('.grumble-count', text: 1)
+    expect(page).to have_selector('.comment_count', text: 1)
     expect(page).to have_content(text)
   end
 
@@ -27,9 +27,9 @@ RSpec.feature "PostComments", type: :feature do
     text = 'そういうこともある'
     fill_in 'comment[body]', with: text
     click_on 'コメントを投稿'
-    expect(page).to have_selector('.grumble-count', text: 1)
+    expect(page).to have_selector('.comment_count', text: 1)
     click_on 'コメントを消す'
-    expect(page).to have_selector('.grumble-count', text: 0)
+    expect(page).to have_selector('.comment_count', text: 0)
   end
 
   it 'wrong user do not delete comment' do
@@ -42,7 +42,7 @@ RSpec.feature "PostComments", type: :feature do
     logout
     login(@other_user)
     click_on 'コメント', match: :first
-    expect(page).to have_selector('.grumble-count', text: 1)
+    expect(page).to have_selector('.comment_count', text: 1)
     expect(page).not_to have_content('コメントを消す')
   end
 end
