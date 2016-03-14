@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "PostGrumbles", type: :feature do
+RSpec.feature 'PostGrumbles', type: :feature do
 
   it 'grumble post is success' do
     visit root_path

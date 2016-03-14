@@ -19,7 +19,8 @@ class CheersController < ApplicationController
   end
 
   private
-    def set_cheer
-      @grumble = Grumble.find(params[:grumble_id])
-    end
+
+  def set_cheer
+    @grumble = Grumble.find(params[:grumble_id])
+  end
 end

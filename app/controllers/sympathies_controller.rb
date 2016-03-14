@@ -19,7 +19,8 @@ class SympathiesController < ApplicationController
   end
 
   private
-    def set_sympathy
-      @grumble = Grumble.find(params[:grumble_id])
-    end
+
+  def set_sympathy
+    @grumble = Grumble.find(params[:grumble_id])
+  end
 end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "PostCheers", type: :feature do
+RSpec.feature 'PostCheers', type: :feature do
   before do
     @user = create(:mikami)
     @other_user = create(:ayu)

@@ -37,14 +37,14 @@ class GrumblesController < ApplicationController
 
   private
 
-    def grumble_params
-      params.require(:grumble).permit(:body)
-    end
+  def grumble_params
+    params.require(:grumble).permit(:body)
+  end
 
-    def find_hash_tag
-      body = params[:grumble][:body]
-      filter = /[#＃][Ａ-Ｚａ-ｚA-Za-z一-鿆0-9０-９ぁ-ヶｦ-ﾟー]+/
-      @grumble_tags = body.scan(filter).map(&:strip)
-      @grumble_tags.map { |tag| tag.delete!('#') }
-    end
+  def find_hash_tag
+    body = params[:grumble][:body]
+    filter = /[#＃][Ａ-Ｚａ-ｚA-Za-z一-鿆0-9０-９ぁ-ヶｦ-ﾟー]+/
+    @grumble_tags = body.scan(filter).map(&:strip)
+    @grumble_tags.map { |tag| tag.delete!('#') }
+  end
 end

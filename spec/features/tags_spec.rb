@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Tags", type: :feature do
+RSpec.feature 'Tags', type: :feature do
   it 'tag list page when user grumble post with tag' do
     visit root_path
     text = attributes_for(:muritag)
