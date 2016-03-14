@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :user_sessions
   resources :users do
     resources :grumbles, only: [:index]
+    resources :cheers, only: [:index]
+    resources :sympathies, only: [:index]
+    resources :comments, only: [:index]
   end
   resources :grumbles, only: [:show, :new, :create, :destroy] do
     resources :cheers, only: [:create, :destroy]

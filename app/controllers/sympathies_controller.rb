@@ -1,5 +1,11 @@
 class SympathiesController < ApplicationController
   before_action :set_sympathy, only: [:create, :destroy]
+
+  def index
+    @user = current_user
+    @grumbles = @user.sympathy_grumbles.order(created_at: :desc).page(params[:page])
+  end
+
   def create
     sympathy = current_user.sympathies.build(grumble_id: @grumble.id)
     sympathy.save

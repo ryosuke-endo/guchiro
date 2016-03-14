@@ -3,6 +3,11 @@ class CommentsController < ApplicationController
   before_action :set_my_comment, only: [:destroy]
   before_action :set_anonymous_digest, only: [:create]
 
+  def index
+    @user = current_user
+    @grumbles = @user.comment_grumbles.order(created_at: :desc).page(params[:page])
+  end
+
   def create
     @grumble = Grumble.find(params[:grumble_id])
     @comment = @grumble.comments.build(comment_params)
