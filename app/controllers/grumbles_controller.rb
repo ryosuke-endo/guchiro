@@ -1,6 +1,5 @@
 class GrumblesController < ApplicationController
   skip_before_action :require_login, only: [:new, :show, :create, :tag_list]
-  before_action :set_anonymous_digest, only: [:create]
   before_action :find_hash_tag, only: [:create]
 
   def index
@@ -21,7 +20,7 @@ class GrumblesController < ApplicationController
 
   def create
     @grumble = Grumble.new(grumble_params)
-    @grumble.anonymous_digest = @grumble_anonymous_digest
+    @grumble.anonymous_digest = User.set_anonymous_digest
     @grumble.tag_list.add(@grumble_tags)
     @grumble.user = current_user
     if @grumble.save
@@ -40,11 +39,6 @@ class GrumblesController < ApplicationController
 
     def grumble_params
       params.require(:grumble).permit(:body)
-    end
-
-    def set_anonymous_digest
-      @grumble_anonymous_name = anonymous_name
-      @grumble_anonymous_digest = anonymous_digest(@grumble_anonymous_name, 8)
     end
 
     def find_hash_tag

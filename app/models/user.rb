@@ -14,6 +14,18 @@ class User < ActiveRecord::Base
 
   validates :email, uniqueness: true
 
+  class << self
+    def set_user_ip
+      Thread.current[:request].ip
+    end
+
+    def set_anonymous_digest
+      user_ip = User.set_user_ip
+      @anonymous_name = AnonymousHelper::Anonymous.name(user_ip)
+      @anonymous_digest = AnonymousHelper::Anonymous.digest(@anonymous_name, 8)
+    end
+  end
+
   def cheered_count
     grumbles.joins(:cheers).count
   end
