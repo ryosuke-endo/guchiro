@@ -3,7 +3,7 @@
     .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
       .inquiry_title
         h2.i.fa.fa-envelope-o お問い合わせ内容確認
-      = form_for @inquiry, :url => inquiry_thanks_path do |f|
+      = form_for @inquiry, :url => inquiry_created_path do |f|
         .tanle-responsive
           table.table.table-bordered
             thead

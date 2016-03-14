@@ -1,5 +1,5 @@
 class InquiryController < ApplicationController
-  skip_before_action :require_login, only: [:index, :confirm, :thanks]
+  skip_before_action :require_login, only: [:index, :confirm, :created]
   def index
     @inquiry = Inquiry.new
   end
@@ -13,14 +13,15 @@ class InquiryController < ApplicationController
     end
   end
 
-  def thanks
+  def created
     @inquiry = Inquiry.new(inquiry_params)
     InquiryMailer.received_email(@inquiry).deliver
-    render action: 'thanks'
+    render action: 'created'
   end
 
-    private
-    def inquiry_params
-      params.require(:inquiry).permit(:name, :email, :message)
-    end
+  private
+
+  def inquiry_params
+    params.require(:inquiry).permit(:name, :email, :message)
+  end
 end
