@@ -1,0 +1,22 @@
+.container
+  .row
+    .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+      .inquiry_title
+        h2.i.fa.fa-envelope-o お問い合わせ完了
+        p 以下のように承りました。
+      .tanle-responsive
+        table.table.table-bordered
+          thead
+            tr
+              th.col-xs-3 項目
+              th 内容
+          tbody
+            tr
+              th.col-xs-3 名前
+              th  = @inquiry.name
+            tr
+              td.col-xs-3 email
+              td = @inquiry.email
+            tr
+              td.col-xs-3 お問い合わせ内容
+              td = simple_format(@inquiry.message)
