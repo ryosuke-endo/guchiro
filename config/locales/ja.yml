@@ -6,6 +6,28 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    attributes:
+      user:
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+
+  activemodel:
+    errors:
+      messages:
+        blank: "%{attribute}を入力してください"
+    models:
+      inquiry: 'お問い合わせ'
+    attributes:
+      inquiry:
+        name: '名前'
+        email: 'メールアドレス'
+        message: 'お問い合わせ内容'
+
+  user_sessions:
+    create:
+      failed: 'ログインに失敗しました'
+
   date:
     abbr_day_names:
     - 日
@@ -106,7 +128,7 @@ ja:
     format: "%{attribute}%{message}"
     messages:
       accepted: を受諾してください
-      blank: を入力してください
+      blank: "を入力してください"
       present: は入力しないでください
       confirmation: と%{attribute}の入力が一致しません
       empty: を入力してください
@@ -199,3 +221,5 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       short: "%y/%m/%d %H:%M"
     pm: 午後
+
+  notice: '先にログインしてください'

@@ -1,10 +1,17 @@
 = form_tag user_sessions_path, :method => :post, class: 'form-horizontal' do
-
-  div.form-group
-    div.col-xs-12
+  - if flash.any?
+    .alert.alert-danger
+      - flash.each do |type, msg|
+        strong
+        - if flash[:notice].nil?
+          | 入力内容にエラーがあります
+        ul
+          li = msg
+  .form-group
+    .col-xs-12
       = text_field_tag :email, '', class: 'form-control', placeholder: 'Email'
-  div.form-group
-    div.col-xs-12
+  .form-group
+    .col-xs-12
       = password_field_tag :password, '', class: 'form-control', placeholder: 'パスワード'
-  div.form_actions.text-center
+  .form_actions.text-center
     = submit_tag 'ログイン', class: 'login-button'

@@ -1,11 +1,11 @@
-
 = form_for @user, html: { class: 'form-horizontal', id: 'contactForm'} do |f|
   - if @user.errors.any?
-    #error_explanation
-    h2 = "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
-    ul
+    .alert.alert-danger
+      strong
+      | 入力内容にエラーがあります
+      ul
       - @user.errors.full_messages.each do |message|
-        li = message
+        li  = message
   .row.control-group
     .form-group.col-xs-12
       = f.text_field :email, class: 'form-control', placeholder: 'Email'
