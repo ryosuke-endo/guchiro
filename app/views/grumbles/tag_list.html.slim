@@ -1,9 +1,7 @@
 .container
   .row
     .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1.text-center.tag_name
-      |「
-      = @tag
-      | 」に関する一覧
+      = t('search_for', text: @tag)
 = render 'layouts/menu'
-= render 'shared/grumble_main', { grumbles: @grumbles}
+= render 'grumble_main', { grumbles: @grumbles}
 = paginate @grumbles

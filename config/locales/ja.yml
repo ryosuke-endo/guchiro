@@ -223,3 +223,4 @@ ja:
     pm: 午後
 
   notice: '先にログインしてください'
+  search_for: "「%{text}」に関する一覧"

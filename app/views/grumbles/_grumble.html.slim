@@ -6,7 +6,7 @@
           .row
             .col-xs-2
               ul.tag_lists
-                = render partial: 'shared/grumble_tag_list', locals: { tags: @grumble.tags }
+                = render partial: 'grumble_tag_list', locals: { tags: @grumble.tags }
             .col-xs-10
               p.post-meta
                 | 投稿日:
@@ -16,6 +16,6 @@
                 |
                 = @grumble.anonymous_digest
               h2.post-subtitle = @grumble.body
-              = render partial: 'shared/cheer_count', locals: { grumble: @grumble }
-              = render partial: 'shared/sympathy_count', locals: { grumble: @grumble }
-              = render partial: 'shared/comment_count', locals: { grumble: @grumble }
+              = render partial: 'cheer_count', locals: { grumble: @grumble }
+              = render partial: 'sympathy_count', locals: { grumble: @grumble }
+              = render partial: 'comment_count', locals: { grumble: @grumble }

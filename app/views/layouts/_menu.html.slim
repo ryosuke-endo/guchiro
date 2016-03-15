@@ -6,5 +6,4 @@
           li = link_to 'メイン', root_path, class: "#{active?("grumbles", "new")}"
           -if current_user
             li = link_to '履歴', user_grumbles_path(current_user), class: "#{active?("grumbles", "index")}"
-          li = link_to '人気'
           li = link_to 'タグ', tags_path, class: "#{active?("tags", "index")}"
