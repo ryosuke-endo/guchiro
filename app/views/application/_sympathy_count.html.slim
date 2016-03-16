@@ -1,19 +1,19 @@
 .col-xs-4.grumble_sympathy.text-center
   - if current_user.nil?
-    = link_to grumble_sympathies_path(grumble.id), method: :post
+    = link_to grumble_sympathies_path(grumble.id), method: :post, class: 'hvr-grow'
       i.fa.fa-heart
       span.sympathy_count
         = grumble.sympathies.count
       | 共感する
   - else
     - if current_user.sympathies.find_by(grumble_id: grumble.id)
-      = link_to grumble_sympathy_path(grumble.id, grumble.sympathies.first.id), method: :delete, class: 'grumble_sympathy-active'
+      = link_to grumble_sympathy_path(grumble.id, grumble.sympathies.first.id), method: :delete, class: 'grumble_sympathy-active hvr-grow'
         i.fa.fa-heart
         span.sympathy_count
           = grumble.sympathies.count
         | 共感済み
     - else
-      = link_to grumble_sympathies_path(grumble.id), method: :post
+      = link_to grumble_sympathies_path(grumble.id), method: :post, class: 'hvr-grow'
         i.fa.fa-heart
         span.sympathy_count
           = grumble.sympathies.count

@@ -1,19 +1,19 @@
 .col-xs-4.grumble_cheer.text-center
   - if current_user.nil?
-    = link_to grumble_cheers_path(grumble.id), method: :post
+    = link_to grumble_cheers_path(grumble.id), method: :post, class: 'hvr-grow'
       i.fa.fa-thumbs-o-up
       span.cheer_count
         = grumble.cheers.count
       | 応援する
   - else
     - if current_user.cheers.find_by(grumble_id: grumble.id)
-      = link_to grumble_cheer_path(grumble.id, grumble.cheers.first.id), method: :delete, class: 'grumble_cheer-active'
+      = link_to grumble_cheer_path(grumble.id, grumble.cheers.first.id), method: :delete, class: 'grumble_cheer-active hvr-grow'
         i.fa.fa-thumbs-o-up
         span.cheer_count
           = grumble.cheers.count
         | 応援済み
     - else
-      = link_to grumble_cheers_path(grumble.id), method: :post
+      = link_to grumble_cheers_path(grumble.id), method: :post, class: 'hvr-grow'
         i.fa.fa-thumbs-o-up
         span.cheer_count
           = grumble.cheers.count

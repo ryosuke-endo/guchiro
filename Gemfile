@@ -12,6 +12,7 @@ gem 'kaminari'
 gem 'acts-as-taggable-on', '~> 3.4'
 # javascript
 gem 'jquery-rails'
+gem 'hover-rails'
 
 # assets
 gem 'coffee-rails', '~> 4.1.0'

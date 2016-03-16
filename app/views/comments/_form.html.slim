@@ -1,6 +1,6 @@
 .container
   .row
-    .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+    .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1.comment_container
       = form_for comment, url: grumble_comments_path(@grumble), html: { class: 'form-horizontal' } do |f|
         - if comment.errors.any?
           #error_explanation
@@ -9,6 +9,6 @@
               li = message
         .col-xs-12
           .form-group
-            = f.text_area :body, class: 'form-control', row: 4, placeholder: '励ましたり、共感したことを書きましょう'
+            = f.text_area :body, class: 'form-control', row: 5, placeholder: '励ましたり、共感したことを書きましょう'
           .form-group.text-center
             = f.submit 'コメントを投稿', class: 'comment-button'
