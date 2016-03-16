@@ -26,8 +26,9 @@ module Guchiro
     # template generators's configuration
     config.sass.preferred_syntax = :sass
     config.generators do |g|
+      g.helper false
       g.template_engine :slim
-      g.test_framework :rspec
+      g.test_framework :rspec, view_specs: false, helper_spece: false
     end
   end
 end
