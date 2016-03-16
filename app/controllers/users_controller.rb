@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_action :require_login, only: [:index, :new, :create]
+  before_action :admin_user?, only: [:index]
+  before_action :identity_user?, only: [:show, :edit]
+  skip_before_action :require_login, only: [:new, :create]
 
   def index
     @users = User.all
@@ -47,11 +49,20 @@ class UsersController < ApplicationController
   end
 
   private
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
+  def admin_user?
+    redirect_to root_path unless current_user.admin?
+  end
+
+  def identity_user?
+    redirect_to user_path(current_user) if current_user.id != params[:id].to_i
+  end
 end

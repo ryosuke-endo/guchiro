@@ -6,6 +6,7 @@ FactoryGirl.define do
     factory :mikami do
       id 1
       email 'testtest@yahoo.co.jp'
+      admin true
 
       after(:create) do |user|
         create :king, user: user

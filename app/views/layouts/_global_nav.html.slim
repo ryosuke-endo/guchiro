@@ -2,6 +2,10 @@ header#header
   #header-container
     h1.header-title = link_to 'ぐちろう', root_path
     ul#header_lists
+      - if current_user && current_user.admin?
+        li = link_to users_path, class: 'header_list-users'
+          i.fa.fa-user-secret
+          | 管理者専用
       - if current_user
         li = link_to user_path(current_user), class: 'header_list-mypage'
           i.fa.fa-user
