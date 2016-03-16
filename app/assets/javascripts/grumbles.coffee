@@ -1,9 +1,22 @@
 $ ->
+  grumblepost = new Grumblepost
+  grumblepost.disable()
   $('.grumble-textarea').bind 'keyup', ->
     textcount = $(this).val().length
     $('.textcount').html(textcount)
     if 0 < textcount && textcount <= 250
-      $('.grumble-button').prop('disabled', false).removeClass('disabled')
+      grumblepost.able()
+      grumblepost.alert_off()
     else
-      $('.grumble-button').prop('disabled', true).addClass('disabled')
-  $('.grumble-button').prop('disabled', true).addClass('disabled')
+      grumblepost.disable()
+      grumblepost.alert_on()
+
+class Grumblepost
+  disable: ->
+    $('.grumble-button').prop('disabled', true).addClass('disabled')
+  able: ->
+    $('.grumble-button').prop('disabled', false).removeClass('disabled')
+  alert_on: ->
+    $('.textcount').addClass('alert-text')
+  alert_off: ->
+    $('.textcount').removeClass('alert-text')
