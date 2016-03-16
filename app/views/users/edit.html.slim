@@ -1,8 +1,6 @@
-div.form_container-post
-  h2 マイページ
-  div.form-container-block
-    == render 'form'
-
-= link_to 'Show', @user
-'|
-= link_to 'Back', users_path
+.container
+  .row
+    .col-lg-6.col-lg-offset-3.col-md-10.col-md-offset-1
+      .mypage_edit-container.text-center
+        h2 内容変更
+        == render 'form'

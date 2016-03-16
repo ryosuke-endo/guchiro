@@ -2,47 +2,49 @@
   .row
     .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
       .row.mypage_history
-          .col-xs-4.text-center
-            .mypage_content
-              p.mypage_content-title 
-                | ぐち投稿数
-                = link_to '一覧', user_grumbles_path(current_user), class: 'mypage_links'
-              .mypage_description-grumble
-                i.fa.fa-pencil-square-o
-                span.mypage_count = @user.grumbles.count
-          .col-xs-4.text-center
-            .mypage_content
-              p.mypage_content-title
-                | 応援数
-                = link_to '一覧', user_cheers_path(current_user), class: 'mypage_links'
-              .mypage_description-cheer
-                i.fa.fa-thumbs-o-up
-                span.mypage_count = @user.cheers.count
-          .col-xs-4.text-center
-            .mypage_content
-              p.mypage_content-title
-                | 共感数
-                = link_to '一覧', user_sympathies_path(current_user), class: 'mypage_links'
-              .mypage_description-sympathy
-                i.fa.fa-heart
-                span.mypage_count = @user.sympathies.count
-          .col-xs-4.text-center
-            .mypage_content
-              p.mypage_content-title 
-                | コメントしたぐち
-                = link_to '一覧', user_comments_path(current_user), class: 'mypage_links'
-              .mypage_description-comment
-                i.fa.fa-pencil-square-o
-                span.mypage_count = @user.comment_grumbles.count
-          .col-xs-4.text-center
-            .mypage_content
-              p.mypage_content-title もらった応援数
-              .mypage_description-cheer
-                i.fa.fa-thumbs-o-up
-                span.mypage_count = @user.cheered_count
-          .col-xs-4.text-center
-            .mypage_content
-              p.mypage_content-title もらった共感数
-              .mypage_description-sympathy
-                i.fa.fa-heart
-                span.mypage_count = @user.sympathied_count
+        .col-xs-12.text-center
+          = link_to '内容変更', edit_user_path(current_user), class: 'mypage_history-edit'
+        .col-xs-4.text-center
+          .mypage_content
+            p.mypage_content-title 
+              | ぐち投稿数
+              = link_to '一覧', user_grumbles_path(current_user), class: 'mypage_links'
+            .mypage_description-grumble
+              i.fa.fa-pencil-square-o
+              span.mypage_count = @user.grumbles.count
+        .col-xs-4.text-center
+          .mypage_content
+            p.mypage_content-title
+              | 応援数
+              = link_to '一覧', user_cheers_path(current_user), class: 'mypage_links'
+            .mypage_description-cheer
+              i.fa.fa-thumbs-o-up
+              span.mypage_count = @user.cheers.count
+        .col-xs-4.text-center
+          .mypage_content
+            p.mypage_content-title
+              | 共感数
+              = link_to '一覧', user_sympathies_path(current_user), class: 'mypage_links'
+            .mypage_description-sympathy
+              i.fa.fa-heart
+              span.mypage_count = @user.sympathies.count
+        .col-xs-4.text-center
+          .mypage_content
+            p.mypage_content-title 
+              | コメントしたぐち
+              = link_to '一覧', user_comments_path(current_user), class: 'mypage_links'
+            .mypage_description-comment
+              i.fa.fa-pencil-square-o
+              span.mypage_count = @user.comment_grumbles.count
+        .col-xs-4.text-center
+          .mypage_content
+            p.mypage_content-title もらった応援数
+            .mypage_description-cheer
+              i.fa.fa-thumbs-o-up
+              span.mypage_count = @user.cheered_count
+        .col-xs-4.text-center
+          .mypage_content
+            p.mypage_content-title もらった共感数
+            .mypage_description-sympathy
+              i.fa.fa-heart
+              span.mypage_count = @user.sympathied_count
