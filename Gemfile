@@ -10,6 +10,7 @@ gem 'sorcery'
 gem 'font-awesome-rails'
 gem 'kaminari'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'meta-tags'
 # javascript
 gem 'jquery-rails'
 gem 'jquery-turbolinks'

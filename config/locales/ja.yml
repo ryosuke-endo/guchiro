@@ -238,6 +238,14 @@ ja:
       previous: "&lsaquo; 前"
       truncate: "&hellip;"
 
+  meta_site_title: 'ぐちろう'
+  meta_title: 'ぐちを応援し、共感しあう匿名のつぶやきサービス'
+  meta_descrption: 'ぐちろうは愚痴を応援し、共感するサービスです。匿名で書き込みを行えるので、誰にもバレずに投稿できます。'
+  meta_keywords: 愚痴,ぐち,つらい,共感,応援,人生
+
+  inquiry_meta_title: 'お問い合わせ'
+  inquiry_meta_description: 'ぐちろうに関するお問い合わせを受け付けております。改善点、広告運用など、お気軽にお問い合わせください。'
+
   site_name: 'ぐちろう'
   notice: '先にログインしてください'
   tag: 'タグ'

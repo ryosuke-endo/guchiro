@@ -1,3 +1,4 @@
-= render 'grumble', { grumbles: @grumbles}
+- set_meta_tags title: @grumble.body, reverse: true
+= render 'grumble'
 = render @comments
 = render 'comments/form', { comment: @comment }

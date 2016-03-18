@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include SeoHelper
+
   def active?(controller_name, controller_action)
     if controller_name == params[:controller] && controller_action == params[:action]
       'active'
