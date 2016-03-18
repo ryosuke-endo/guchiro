@@ -14,6 +14,7 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'hover-rails'
+gem 'i18n-js', '>= 3.0.0.rc11'
 
 # assets
 gem 'coffee-rails', '~> 4.1.0'
@@ -46,6 +47,7 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'better_errors'
+  gem 'meta_request'
 end
 
 group :production do

@@ -9,13 +9,19 @@ class CheersController < ApplicationController
   def create
     cheer = current_user.cheers.build(grumble_id: @grumble.id)
     cheer.save
-    redirect_to(:back)
+    respond_to do |format|
+      format.html { render nothing: true }
+      format.js { render nothing: true }
+    end
   end
 
   def destroy
     cheer = current_user.cheers.find_by(grumble_id: @grumble.id)
     cheer.destroy
-    redirect_to(:back)
+    respond_to do |format|
+      format.html { render nothing: true }
+      format.js { render nothing: true }
+    end
   end
 
   private

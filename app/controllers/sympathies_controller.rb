@@ -9,13 +9,19 @@ class SympathiesController < ApplicationController
   def create
     sympathy = current_user.sympathies.build(grumble_id: @grumble.id)
     sympathy.save
-    redirect_to(:back)
+    respond_to do |format|
+      format.html { render nothing: true }
+      format.js { render nothing: true }
+    end
   end
 
   def destroy
     sympathy = current_user.sympathies.find_by(grumble_id: @grumble.id)
     sympathy.destroy
-    redirect_to(:back)
+    respond_to do |format|
+      format.html { render nothing: true }
+      format.js { render nothing: true }
+    end
   end
 
   private

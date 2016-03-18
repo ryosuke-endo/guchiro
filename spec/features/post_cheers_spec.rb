@@ -1,44 +1,52 @@
 require 'rails_helper'
 
 RSpec.feature 'PostCheers', type: :feature do
-  before do
-    @user = create(:mikami)
-    @other_user = create(:ayu)
+  context 'no user have grumble' do
+    before do
+      @user = create(:papasu)
+      @other_user = create(:ayu)
+      @grumble = create(:grumble)
+    end
+
+    it 'not login user redirect when click cheer button', js: true do
+      visit root_path
+      find('.cheer_button').click
+      expect(current_path).to eq login_path
+    end
+
+    it 'user click cheer button and cheer count up', js: true do
+      login(@user)
+      find('.cheer_button').click
+      expect(page).to have_selector('.cheer_count', text: 1)
+      logout
+      login(@other_user)
+      find('.cheer_button').click
+      expect(page).to have_selector('.cheer_count', text: 2)
+    end
+
+    it 'user click cheer button and cheer count down', js: true do
+      login(@user)
+      find('.cheer_button').click
+      expect(page).to have_selector('.cheer_count', text: 1)
+      find('.cheer_button').click
+      expect(page).to have_selector('.cheer_count', text: 0)
+    end
+
+    it 'comment page when user click cheer button in grumble comment show page', js: true do
+      login(@user)
+      click_on 'コメント', match: :first
+      find('.cheer_button').click
+      expect(current_path).to eq grumble_path(@grumble)
+      expect(page).to have_selector('.cheer_count', text: 1)
+      find('.cheer_button').click
+      expect(page).to have_selector('.cheer_count', text: 0)
+    end
   end
 
-  it 'not login user redirect when click cheer button' do
-    visit root_path
-    click_link '応援', match: :first
-    expect(current_path).to eq login_path
-  end
-
-  it 'user click cheer button and cheer count up' do
-    login(@user)
-    click_link '応援', match: :first
-    expect(page).to have_selector('.cheer_count', text: 1)
-    expect(page).to have_content('応援済み')
-    logout
-    login(@other_user)
-    click_link '応援', match: :first
-    expect(page).to have_selector('.cheer_count', text: 2)
-  end
-
-  it 'user click cheer button and cheer count down' do
-    login(@user)
-    click_link '応援', match: :first
-    expect(page).to have_selector('.cheer_count', text: 1)
-    click_link '応援済み'
-    expect(page).to have_selector('.cheer_count', text: 0)
-  end
-
-  it 'redirect current_path when user click cheer button in grumble comment show page' do
-    grumble = create(:tsukareta)
-    login(@user)
-    click_on 'コメント', match: :first
-    click_link '応援'
-    expect(current_path).to eq grumble_path(grumble)
-    expect(page).to have_selector('.cheer_count', text: 1)
-    click_link '応援済み'
+  it 'my grumble post do not click cheer', js: true do
+    @mikami = create(:mikami)
+    login(@mikami)
+    find('.cheer_button').click
     expect(page).to have_selector('.cheer_count', text: 0)
   end
 end

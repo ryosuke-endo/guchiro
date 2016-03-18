@@ -4,4 +4,28 @@ module ApplicationHelper
       'active'
     end
   end
+
+  def cheer_attrs(user, grumble)
+    if !current_user
+      'signin_required'
+    elsif Grumble.grumbled_by_user(user, grumble) == current_user
+      'is-owner is-disable'
+    elsif Cheer.cheered_by_user?(current_user, grumble)
+      'on'
+    else
+      'off'
+    end
+  end
+
+  def sympathy_attrs(user, grumble)
+    if !current_user
+      'signin_required'
+    elsif Grumble.grumbled_by_user(user, grumble) == current_user
+      'is-owner is-disable'
+    elsif Sympathy.sympathied_by_user?(current_user, grumble)
+      'on'
+    else
+      'off'
+    end
+  end
 end

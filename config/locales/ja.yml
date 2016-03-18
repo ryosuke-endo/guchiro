@@ -240,3 +240,9 @@ ja:
 
   notice: '先にログインしてください'
   search_for: "「%{text}」に関する一覧"
+  cheer: '応援する'
+  cheered: '応援済み'
+  owner_cheer: '応援'
+  sympathy: '共感する'
+  sympathied: '共感済み'
+  owner_sympathy: '共感'

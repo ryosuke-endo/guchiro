@@ -17,5 +17,10 @@ FactoryGirl.define do
       id 2
       email 'testtest2@gmail.co.jp'
     end
+
+    factory :papasu do
+      id 3
+      email 'papasu@gmail.co.jp'
+    end
   end
 end

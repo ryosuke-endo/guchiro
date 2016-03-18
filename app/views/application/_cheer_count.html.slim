@@ -1,20 +1,5 @@
 .col-xs-4.grumble_cheer.text-center
-  - if current_user.nil?
-    = link_to grumble_cheers_path(grumble.id), method: :post, class: 'hvr-grow'
-      i.fa.fa-thumbs-o-up
-      span.cheer_count
-        = grumble.cheers.count
-      | 応援する
-  - else
-    - if current_user.cheers.find_by(grumble_id: grumble.id)
-      = link_to grumble_cheer_path(grumble.id, grumble.cheers.first.id), method: :delete, class: 'grumble_cheer-active hvr-grow'
-        i.fa.fa-thumbs-o-up
-        span.cheer_count
-          = grumble.cheers.count
-        | 応援済み
-    - else
-      = link_to grumble_cheers_path(grumble.id), method: :post, class: 'hvr-grow'
-        i.fa.fa-thumbs-o-up
-        span.cheer_count
-          = grumble.cheers.count
-        | 応援する
+  span id="#{grumble.id}" class='hvr-grow cheer_button grumble_cheer-#{grumble.id} #{cheer_attrs(current_user, grumble)}'
+    i.fa.fa-thumbs-o-up
+    span class="cheer_count-#{grumble.id} cheer_count" = grumble.cheers.count
+    span class="cheer_count-text-#{grumble.id} cheer-message" = t('cheer')
