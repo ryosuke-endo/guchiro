@@ -1,17 +1,16 @@
 $ ->
-  grumblepost = new Grumblepost
-  grumblepost.disable()
+  Grumblepost.disable()
   $('.grumble-textarea').bind 'keyup', ->
     textcount = $(this).val().length
     $('.textcount').html(textcount)
     if 0 < textcount && textcount <= 250
-      grumblepost.able()
-      grumblepost.alert_off()
+      Grumblepost.able()
+      Grumblepost.alert_off()
     else
-      grumblepost.disable()
-      grumblepost.alert_on()
+      Grumblepost.disable()
+      Grumblepost.alert_on()
 
-class Grumblepost
+@Grumblepost =
   disable: ->
     $('.grumble-button').prop('disabled', true).addClass('disabled')
   able: ->
