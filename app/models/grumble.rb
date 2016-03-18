@@ -5,7 +5,7 @@ class Grumble < ActiveRecord::Base
   has_many :cheers
   has_many :sympathies
   has_many :comments
-  validates :body, presence: true, length: { maximum: 300 }
+  validates :body, presence: true, length: { maximum: 250 }
 
   class << self
     def grumbled_by_user(user, grumble)
