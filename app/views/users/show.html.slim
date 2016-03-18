@@ -6,29 +6,33 @@
           = link_to t('contents_change'), edit_user_path(current_user), class: 'mypage_history-edit'
         .col-xs-4.text-center
           .mypage_content
-            p.mypage_content-title = t('post_grumble_count')
-              = link_to t('list'), user_grumbles_path(current_user), class: 'mypage_links'
+            p.mypage_content-title
+              = t('post_grumble_count')
+              = link_to t('list'), user_grumbles_path(current_user), class: 'mypage_links my_post-grumble'
             .mypage_description-grumble
               i.fa.fa-pencil-square-o
               span.mypage_count = @user.grumbles.count
         .col-xs-4.text-center
           .mypage_content
-            p.mypage_content-title = t('post_cheer_count')
-              = link_to t('list'), user_cheers_path(current_user), class: 'mypage_links'
+            p.mypage_content-title
+              = t('post_cheer_count')
+              = link_to t('list'), user_cheers_path(current_user), class: 'mypage_links my_post-cheer'
             .mypage_description-cheer
               i.fa.fa-thumbs-o-up
               span.mypage_count = @user.cheers.count
         .col-xs-4.text-center
           .mypage_content
-            p.mypage_content-title = t('post_sympathy_count')
-              = link_to t('list'), user_sympathies_path(current_user), class: 'mypage_links'
+            p.mypage_content-title 
+              = t('post_sympathy_count')
+              = link_to t('list'), user_sympathies_path(current_user), class: 'mypage_links my_post-sympathy'
             .mypage_description-sympathy
               i.fa.fa-heart
               span.mypage_count = @user.sympathies.count
         .col-xs-4.text-center
           .mypage_content
-            p.mypage_content-title = t('post_comment_count')
-              = link_to t('list'), user_comments_path(current_user), class: 'mypage_links'
+            p.mypage_content-title 
+              = t('post_comment_count')
+              = link_to t('list'), user_comments_path(current_user), class: 'mypage_links my_post-comment'
             .mypage_description-comment
               i.fa.fa-pencil-square-o
               span.mypage_count = @user.comment_grumbles.count
