@@ -2,8 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
-  $('.is-disable').find('.cheer-message').text('応援')
-  $('.on').find('.cheer-message').text('応援済み')
+  $('.is-disable').find('.cheer-message').text(I18n.t('owner_cheer'))
+  $('.on').find('.cheer-message').text(I18n.t('cheered'))
   $('.cheer_button').on 'click', ->
     cheer_class = $(this).attr('class').split(' ')
     grumble_id = $(this).attr('id').split(' ')
@@ -39,12 +39,12 @@ $ ->
       url: url
       id: grumble_id
       success: ->
-        $(text).text('応援済み')
+        $(text).text(I18n.t('cheered'))
         $(cheer_count).text(count)
         $(change_class).removeClass('off')
         $(change_class).addClass('on')
       error: ->
-        $(text).text('失敗')
+        $(text).text(I18n.t('fail'))
 
   off: (grumble_id) ->
     before_count = parseInt $(".cheer_count-#{grumble_id}").text()
@@ -62,9 +62,9 @@ $ ->
       url: url
       id: grumble_id
       success: ->
-        $(text).text('応援する')
+        $(text).text(I18n.t('cheer'))
         $(cheer_count).text(count)
         $(change_class).removeClass('on')
         $(change_class).addClass('off')
       error: ->
-        $(text).text('失敗')
+        $(text).text(I18n.t('fail'))

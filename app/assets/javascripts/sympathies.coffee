@@ -2,8 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
-  $('.is-disable').find('.sympathy-message').text('共感')
-  $('.on').find('.sympathy-message').text('共感済み')
+  $('.is-disable').find('.sympathy-message').text(I18n.t('owner_sympathy'))
+  $('.on').find('.sympathy-message').text(I18n.t('sympathied'))
   $('.sympathy_button').on 'click', ->
     sympathy_class = $(this).attr('class').split(' ')
     grumble_id = $(this).attr('id').split(' ')
@@ -39,12 +39,12 @@ $ ->
       url: url
       id: grumble_id
       success: ->
-        $(text).text('共感済み')
+        $(text).text(I18n.t('sympathied'))
         $(sympathy_count).text(count)
         $(change_class).removeClass('off')
         $(change_class).addClass('on')
       error: ->
-        $(text).text('失敗')
+        $(text).text(I18n.t('fail'))
 
   off: (grumble_id) ->
     before_count = parseInt $(".sympathy_count-#{grumble_id}").text()
@@ -62,9 +62,9 @@ $ ->
       url: url
       id: grumble_id
       success: ->
-        $(text).text('共感する')
+        $(text).text(I18n.t('sympathy'))
         $(sympthy_count).text(count)
         $(change_class).removeClass('on')
         $(change_class).addClass('off')
       error: ->
-        $(text).text('失敗')
+        $(text).text(I18n.t('fail'))

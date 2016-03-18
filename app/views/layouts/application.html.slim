@@ -7,6 +7,10 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    script[type="text/javascript"]
+      |I18n.defaultLocale = "#{I18n.default_locale}";
+      |I18n.locale = "#{I18n.locale}";
+      |I18n.fallbacks = true;
   body
     = render 'layouts/global_nav'
     .main_conatiner

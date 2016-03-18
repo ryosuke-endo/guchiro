@@ -241,6 +241,7 @@ ja:
   notice: '先にログインしてください'
   tag_list: 'タグリスト'
   search_for: "「%{text}」に関する一覧"
+  fail: '失敗'
   cheer: '応援する'
   cheered: '応援済み'
   owner_cheer: '応援'
