@@ -1,5 +1,5 @@
 .col-xs-4.grumble_sympathy.text-center
   span id="#{grumble.id}" class='hvr-grow sympathy_button grumble_sympathy-#{grumble.id} #{sympathy_attrs(current_user, grumble)}'
-    i.fa.fa-thumbs-o-up
+    i.fa.fa-heart
     span class="sympathy_count-#{grumble.id} sympathy_count" = grumble.sympathies.count
     span class="sympathy_count-text-#{grumble.id} sympathy-message" = t('sympathy')
