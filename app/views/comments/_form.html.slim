@@ -9,6 +9,6 @@
               li = message
         .col-xs-12
           .form-group
-            = f.text_area :body, class: 'form-control', row: 5, placeholder: '励ましたり、共感したことを書きましょう'
+            = f.text_area :body, class: 'form-control', row: 5, :placeholder => t('post_comment_message')
           .form-group.text-center
-            = f.submit 'コメントを投稿', class: 'comment-button'
+            = f.submit t('post_comment'), class: 'comment-button'

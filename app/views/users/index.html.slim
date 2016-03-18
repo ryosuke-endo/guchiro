@@ -1,12 +1,12 @@
 .container
   .row
     .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
-      h2 管理画面
+      h2 = t('management_screen')
 
       table.table.table-bordered
         thead
           tr
-            th Email
+            th = t('email')
             th
             th
             th
@@ -15,6 +15,6 @@
           - @users.each do |user|
             tr
               td = user.email
-              td = link_to 'ユーザーページ', user
-              td = link_to '編集', edit_user_path(user)
-              td = link_to '削除', user, data: {:confirm => '本当に削除してもよろしいですか？'}, :method => :delete
+              td = link_to t('user_page'), user
+              td = link_to t('edit'), edit_user_path(user)
+              td = link_to t('delete'), user, data: {:confirm => t('delete_confirm')}, :method => :delete

@@ -3,13 +3,11 @@
     .row
       fotter.fotter_container_inner
         .fotter_inner-left.col-md-6.col-xs-12
-          p みんなの愚痴を共感・応援しあうサービス
-          p Copyright Guchiro, All Rights Reserverd
+          p = t('site_concept')
+          p = t('copyright')
         .fotter_inner-right.col-md-6.col-xs-12
           ul
             li = link_to inquiry_index_path
-              i.fa.fa-angle-right
-              | お問い合わせ
+              i.fa.fa-angle-right = t('inquiry')
             li = link_to tos_path
-              i.fa.fa-angle-right
-              | 利用規約
+              i.fa.fa-angle-right = t('terms_of_service')

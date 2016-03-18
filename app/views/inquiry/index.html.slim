@@ -2,30 +2,28 @@
   .row
     .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
       .inquiry_title
-        h2.i.fa.fa-envelope-o ぐちろうに関するお問い合わせ
-        p お問い合わせ内容に関してはすべて目を通した上、対応を行いますが、内容によっては対応できない場合がございます。ご了承ください。
+        h2.i.fa.fa-envelope-o = t('management_contact')
+        p =t('management_contact_massage')
       = form_for @inquiry, :url => inquiry_confirm_path, html: { class: 'form-horizontal' } do |f|
         - if @inquiry.errors.any?
           .alert.alert-danger[role="alert"]
-            strong
-              | 入力内容にエラーがあります
+            strong = t('input_contents_error')
             ul
               - @inquiry.errors.messages.each do |msg|
-                li
-                  = msg[1].first
+                li = msg[1].first
         .form-group
-          = f.label :name, '名前', id: 'attension', class: 'col-xs-12 col-sm-3 col-sm-offset-1 control-label'
+          = f.label :name, t('name'), id: 'attension', class: 'col-xs-12 col-sm-3 col-sm-offset-1 control-label'
           .col-xs-12.col-sm-6
             = f.text_field :name, class: 'form-control'
         
         .form-group
-          = f.label :email, 'email', id: 'attension', class: 'col-xs-12 col-sm-3 col-sm-offset-1 control-label'
+          = f.label :email, t('email'), id: 'attension', class: 'col-xs-12 col-sm-3 col-sm-offset-1 control-label'
           .col-xs-12.col-sm-6
             = f.text_field :email, class: 'form-control'
         
         .form-group
-          = f.label :message, 'お問い合わせ内容', id: 'attension', class: 'col-xs-12 col-sm-3 col-sm-offset-1 control-label'
+          = f.label :message, t('inquiry_contents'), id: 'attension', class: 'col-xs-12 col-sm-3 col-sm-offset-1 control-label'
           .col-xs-12.col-sm-6
             = f.text_area :message, class: 'form-control', rows: 6
         .col-xs-12.text-center
-          = f.submit '確認', class: 'inquiry-button'
+          = f.submit t('confirm'), class: 'inquiry-button'

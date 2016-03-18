@@ -2,21 +2,21 @@
   .row
     .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
       .inquiry_title
-        h2.i.fa.fa-envelope-o お問い合わせ完了
-        p 以下のように承りました。
+        h2.i.fa.fa-envelope-o = t('inquiry_complete')
+        p =t('hear')
       .tanle-responsive
         table.table.table-bordered
           thead
             tr
-              th.col-xs-3 項目
-              th 内容
+              th.col-xs-3 = t('item')
+              th = t('contents')
           tbody
             tr
-              th.col-xs-3 名前
+              th.col-xs-3 = t('name')
               th  = @inquiry.name
             tr
-              td.col-xs-3 email
+              td.col-xs-3 = t('email')
               td = @inquiry.email
             tr
-              td.col-xs-3 お問い合わせ内容
+              td.col-xs-3 = t('inquiry_contents')
               td = simple_format(@inquiry.message)

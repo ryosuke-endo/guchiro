@@ -10,9 +10,9 @@
                 li = message
           .col-xs-12
             .form-group
-              = f.text_area :body, class: 'form-control grumble-textarea', rows: 4, placeholder: '投稿にハッシュタグをつけてみませんか？例：#仕事 #恋愛'
+              = f.text_area :body, class: 'form-control grumble-textarea', rows: 4, :placeholder => t('post_grumble_message')
             .form-group.col-xs-4
-              = f.submit 'ぐちっとこ', class: 'grumble-button'
+              = f.submit t('post_grumble'), class: 'grumble-button'
             .textcount-area.col-xs-8.text-right
-              span.textcount 0
-              span.textcount-right &#047;250文字
+              span.textcount = t('textcount')
+              span.textcount-right = t('textcount_limit')

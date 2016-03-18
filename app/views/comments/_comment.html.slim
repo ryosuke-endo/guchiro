@@ -6,14 +6,12 @@
           .col-xs-2
           .col-xs-10
             p.post-meta
-              | 投稿日:
+              = t('posted')
               = comment.created_at.strftime("%Y年%m月%d日%H:%M")
-              |
-              span.grumble_id ID:
-              |
+              span.grumble_id = t('post_id')
               = comment.anonymous_digest
             h2.post-subtitle = comment.body
             - if !current_user.nil?
               - if current_user == comment.user
                 div.comment_delete
-                  = link_to 'コメントを消す', grumble_comment_path(@grumble, comment),method: :delete, data: { confirm: 'コメントを削除してもよろしいですか？' }
+                  = link_to t('delete_comment'), grumble_comment_path(@grumble, comment),method: :delete, data: { confirm: t('delete_comment_confirm') }

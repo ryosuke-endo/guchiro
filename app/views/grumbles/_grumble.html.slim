@@ -9,11 +9,9 @@
                 = render partial: 'grumble_tag_list', locals: { tags: @grumble.tags }
             .col-xs-10
               p.post-meta
-                | 投稿日:
+                = t('posted')
                 = @grumble.created_at.strftime("%Y年%m月%d日%H:%M")
-                |
-                span.grumble_id ID:
-                |
+                span.grumble_id = t('post_id')
                 = @grumble.anonymous_digest
               h2.post-subtitle = @grumble.body
               = render partial: 'cheer_count', locals: { grumble: @grumble }

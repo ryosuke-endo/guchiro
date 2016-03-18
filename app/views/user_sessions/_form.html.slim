@@ -4,14 +4,14 @@
       - flash.each do |type, msg|
         strong
         - if flash[:notice].nil?
-          | 入力内容にエラーがあります
+          = t('input_contents_error')
         ul
           li = msg
   .form-group
     .col-xs-12
-      = text_field_tag :email, '', class: 'form-control', placeholder: 'Email'
+      = text_field_tag :email, '', class: 'form-control', :placeholder => t('email')
   .form-group
     .col-xs-12
-      = password_field_tag :password, '', class: 'form-control', placeholder: 'パスワード'
+      = password_field_tag :password, '', class: 'form-control', :placeholder => t('password')
   .form_actions.text-center
-    = submit_tag 'ログイン', class: 'login-button'
+    = submit_tag t('login'), class: 'login-button'

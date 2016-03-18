@@ -1,20 +1,19 @@
 = form_for @user, html: { class: 'form-horizontal', id: 'contactForm'} do |f|
   - if @user.errors.any?
     .alert.alert-danger
-      strong
-      | 入力内容にエラーがあります
+      strong = t('input_contents_error')
       ul
       - @user.errors.full_messages.each do |message|
         li  = message
   .row.control-group
     .form-group.col-xs-12
-      = f.text_field :email, class: 'form-control', placeholder: 'Email'
+      = f.text_field :email, class: 'form-control', placeholder: t('email')
   .row.control-group
     .form-group.col-xs-12
-      = f.password_field :password, class: 'form-control', placeholder: 'パスワード'
+      = f.password_field :password, class: 'form-control', placeholder: t('password')
   .row.control-group
     .form-group.col-xs-12
-      = f.password_field :password_confirmation, class: 'form-control', placeholder: 'パスワード確認'
+      = f.password_field :password_confirmation, class: 'form-control', placeholder: t('password_confirm')
   .row
     .form-group.col-xs-12.text-center
-      = f.submit '会員登録する', class: 'registration-button'
+      = f.submit t('registration'), class: 'registration-button'
