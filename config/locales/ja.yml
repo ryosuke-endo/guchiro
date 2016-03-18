@@ -238,7 +238,9 @@ ja:
       previous: "&lsaquo; 前"
       truncate: "&hellip;"
 
+  site_name: 'ぐちろう'
   notice: '先にログインしてください'
+  tag: 'タグ'
   tag_list: 'タグリスト'
   search_for: "「%{text}」に関する一覧"
   fail: '失敗'
@@ -270,16 +272,22 @@ ja:
   list: '一覧'
   delete: '削除'
   delete_confirm: '本当に削除してもよろしいですか？'
+  admin_only: '管理者専用'
+  mypage: 'マイページ'
   edit: '編集'
   email: 'email'
   name: '名前'
   password: 'パスワード'
   password_confirm: 'パスワード確認'
   login: 'ログイン'
+  logout: 'ログアウト'
   confirm: '確認'
   user_page: 'ユーザーページ'
   submit: '送信'
+  member_registration: '会員登録'
   registration: '会員登録する'
+  main: 'メイン'
+  history: '履歴'
   input_contents_error: '入力内容にエラーがあります'
   management_contact: 'ぐちろうに関するお問い合わせ'
   management_contact_massage: 'お問い合わせ内容に関してはすべて目を通した上、対応を行いますが、内容によっては対応できない場合がございます。ご了承ください。'

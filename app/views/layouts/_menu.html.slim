@@ -3,7 +3,7 @@
     .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
       .menu
         ul.menu_lists
-          li = link_to 'メイン', root_path, class: "#{active?("grumbles", "new")}"
+          li = link_to t('main'), root_path, class: "#{active?("grumbles", "new")}"
           -if current_user
-            li = link_to '履歴', user_grumbles_path(current_user), class: "#{active?("grumbles", "index")}"
-          li = link_to 'タグ', tags_path, class: "#{active?("tags", "index")}"
+            li = link_to t('history'), user_grumbles_path(current_user), class: "#{active?("grumbles", "index")}"
+          li = link_to t('tag'), tags_path, class: "#{active?("tags", "index")}"

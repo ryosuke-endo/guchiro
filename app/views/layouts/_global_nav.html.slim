@@ -1,22 +1,17 @@
 header#header
   #header-container
-    h1.header-title = link_to 'ぐちろう', root_path
+    h1.header-title = link_to t('site_name'), root_path
     ul#header_lists
       - if current_user && current_user.admin?
         li = link_to users_path, class: 'header_list-users'
-          i.fa.fa-user-secret
-          | 管理者専用
+          i.fa.fa-user-secret = t('admin_only')
       - if current_user
         li = link_to user_path(current_user), class: 'header_list-mypage'
-          i.fa.fa-user
-          |マイページ
+          i.fa.fa-user = t('mypage')
         li = link_to :logout, method: :post, class: 'header_list-logout'
-          i.fa.fa-sign-out
-          |ログアウト
+          i.fa.fa-sign-out = t('logout')
       -else
         li = link_to new_user_path, class: 'header_list-registration'
-          i.fa.fa-user
-          | 会員登録
+          i.fa.fa-user = t('member_registration')
         li = link_to :login, class: 'header_list-login'
-          i.fa.fa-sign-in
-          | ログイン
+          i.fa.fa-sign-in = t('login')
