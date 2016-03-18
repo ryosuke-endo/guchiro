@@ -1,6 +1,6 @@
 class TermsController < ApplicationController
-  skip_before_action :require_login, only: [:tos]
+  skip_before_action :require_login, only: [:index]
 
-  def tos
+  def index
   end
 end

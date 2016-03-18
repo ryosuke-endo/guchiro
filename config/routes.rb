@@ -18,9 +18,9 @@ Rails.application.routes.draw do
 
   resources :tags, only: [:index]
   resources :inquiry, only: [:index]
+  resources :terms, only: [:index]
   post 'inquiry/confirm' => 'inquiry#confirm'
   post 'inquiry/created' => 'inquiry#created'
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
-  get 'tos' => 'terms#tos'
 end
