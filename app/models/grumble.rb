@@ -6,6 +6,7 @@ class Grumble < ActiveRecord::Base
   has_many :sympathies
   has_many :comments
   validates :body, presence: true, length: { maximum: 250 }
+  scope :including_tags, -> { includes(:tags) }
 
   class << self
     def grumbled_by_user(user, grumble)

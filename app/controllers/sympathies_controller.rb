@@ -3,7 +3,7 @@ class SympathiesController < ApplicationController
 
   def index
     @user = current_user
-    @grumbles = @user.sympathy_grumbles.order(created_at: :desc).page(params[:page])
+    @grumbles = @user.sympathy_grumbles.page(params[:page]).including_tags
   end
 
   def create

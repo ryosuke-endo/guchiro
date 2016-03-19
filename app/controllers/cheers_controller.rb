@@ -3,7 +3,7 @@ class CheersController < ApplicationController
 
   def index
     @user = current_user
-    @grumbles = @user.cheer_grumbles.order(created_at: :desc).page(params[:page])
+    @grumbles = @user.cheer_grumbles.page(params[:page]).including_tags
   end
 
   def create

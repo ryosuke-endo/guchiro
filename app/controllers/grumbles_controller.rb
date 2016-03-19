@@ -4,12 +4,12 @@ class GrumblesController < ApplicationController
 
   def index
     @user = current_user
-    @grumbles = @user.grumbles.order(created_at: :desc).page(params[:page])
+    @grumbles = @user.grumbles.page(params[:page]).including_tags
   end
 
   def new
     @grumble = Grumble.new
-    @grumbles = Grumble.order(created_at: :desc).page(params[:page])
+    @grumbles = Grumble.order(created_at: :desc).page(params[:page]).including_tags
   end
 
   def show

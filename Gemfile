@@ -49,6 +49,8 @@ group :development do
   gem 'spring'
   gem 'better_errors'
   gem 'meta_request'
+  gem 'rack-mini-profiler'
+  gem 'bullet'
 end
 
 group :production do
