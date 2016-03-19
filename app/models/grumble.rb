@@ -7,10 +7,4 @@ class Grumble < ActiveRecord::Base
   has_many :comments
   validates :body, presence: true, length: { maximum: 250 }
   scope :including_tags, -> { includes(:tags) }
-
-  class << self
-    def grumbled_by_user(user, grumble)
-      Grumble.find(grumble.id).user
-    end
-  end
 end

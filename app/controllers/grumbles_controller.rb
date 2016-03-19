@@ -9,7 +9,7 @@ class GrumblesController < ApplicationController
 
   def new
     @grumble = Grumble.new
-    @grumbles = Grumble.order(created_at: :desc).page(params[:page]).including_tags
+    @grumbles = Grumble.order(created_at: :desc).page(params[:page]).includes(:user, :tags)
   end
 
   def show

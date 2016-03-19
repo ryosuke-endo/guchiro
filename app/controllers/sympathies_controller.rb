@@ -16,7 +16,7 @@ class SympathiesController < ApplicationController
   end
 
   def destroy
-    sympathy = current_user.sympathies.find_by(grumble_id: @grumble.id)
+    sympathy = Sympathy.find_by(user_id: current_user.id, grumble_id: @grumble.id)
     sympathy.destroy
     respond_to do |format|
       format.html { render nothing: true }

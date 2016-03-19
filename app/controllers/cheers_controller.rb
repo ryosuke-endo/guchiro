@@ -16,7 +16,7 @@ class CheersController < ApplicationController
   end
 
   def destroy
-    cheer = current_user.cheers.find_by(grumble_id: @grumble.id)
+    cheer = Cheer.find_by(user_id: current_user, grumble_id: @grumble)
     cheer.destroy
     respond_to do |format|
       format.html { render nothing: true }
