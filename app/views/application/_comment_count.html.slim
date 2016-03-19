@@ -2,5 +2,5 @@
   = link_to grumble_path(grumble), class: 'hvr-grow'
     i.fa.fa-comment-o
     span.comment_count
-      = grumble.comments.count
+      = grumble.comments.size
       = t('comment')

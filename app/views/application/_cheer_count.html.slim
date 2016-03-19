@@ -1,5 +1,5 @@
 .col-xs-4.grumble_cheer.text-center
   span id="#{grumble.id}" class='hvr-grow cheer_button grumble_cheer-#{grumble.id} #{cheer_attrs(current_user, grumble)}'
     i.fa.fa-thumbs-o-up
-    span class="cheer_count-#{grumble.id} cheer_count" = grumble.cheers.count
+    span class="cheer_count-#{grumble.id} cheer_count" = grumble.cheers.size
     span class="cheer_count-text-#{grumble.id} cheer-message" = t('cheer')

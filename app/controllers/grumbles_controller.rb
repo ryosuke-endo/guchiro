@@ -14,7 +14,7 @@ class GrumblesController < ApplicationController
 
   def show
     @grumble = Grumble.find_by(id: params[:id])
-    @comment = @grumble.comments.new
+    @comment = Comment.new
     @comments = @grumble.comments.includes(:grumble)
   end
 

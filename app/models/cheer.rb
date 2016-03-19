@@ -1,6 +1,6 @@
 class Cheer < ActiveRecord::Base
   belongs_to :user
-  belongs_to :grumble
+  belongs_to :grumble, counter_cache: true
 
   class << self
     def cheered_by_user?(user, grumble)
