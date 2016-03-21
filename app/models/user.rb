@@ -26,6 +26,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def grumble_cheers
+    cheers.pluck(:grumble_id)
+  end
+
+  def grumble_sympathies
+    sympathies.pluck(:grumble_id)
+  end
+
   def cheered_count
     grumbles.joins(:cheers).count
   end

@@ -1,6 +1,8 @@
 class GrumblesController < ApplicationController
   skip_before_action :require_login, only: [:new, :show, :create, :tag_list]
   before_action :find_hash_tag, only: [:create]
+  before_action :set_user_grumble_cheers, only: [:new, :show]
+  before_action :set_user_grumble_sympathies, only: [:new, :show]
 
   def index
     @user = current_user
@@ -39,6 +41,14 @@ class GrumblesController < ApplicationController
 
   def grumble_params
     params.require(:grumble).permit(:body)
+  end
+
+  def set_user_grumble_cheers
+    @user_grumble_cheers = current_user.grumble_cheers if current_user
+  end
+
+  def set_user_grumble_sympathies
+    @user_grumble_sympathies = current_user.grumble_sympathies if current_user
   end
 
   def find_hash_tag

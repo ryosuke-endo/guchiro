@@ -12,7 +12,7 @@ module ApplicationHelper
       'signin_required'
     elsif grumble.user == current_user
       'is-owner is-disable'
-    elsif Cheer.cheered_by_user?(current_user, grumble)
+    elsif @user_grumble_cheers.include?(grumble.id)
       'on'
     else
       'off'
@@ -24,7 +24,7 @@ module ApplicationHelper
       'signin_required'
     elsif grumble.user == current_user
       'is-owner is-disable'
-    elsif Sympathy.sympathied_by_user?(current_user, grumble)
+    elsif @user_grumble_sympathies.include?(grumble.id)
       'on'
     else
       'off'

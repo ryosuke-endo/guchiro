@@ -50,6 +50,7 @@ group :development do
   gem 'better_errors'
   gem 'meta_request'
   gem 'rack-mini-profiler'
+  gem 'stackprof'
   gem 'bullet'
 end
 
