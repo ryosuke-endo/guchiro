@@ -7,8 +7,8 @@ class SympathiesController < ApplicationController
   end
 
   def create
-    sympathy = current_user.sympathies.build(grumble_id: @grumble.id)
-    sympathy.save
+    @sympathy = Sympathy.new(user_id: current_user.id, grumble_id: @grumble.id)
+    @sympathy.save
     respond_to do |format|
       format.html { render nothing: true }
       format.js { render nothing: true }
@@ -16,8 +16,8 @@ class SympathiesController < ApplicationController
   end
 
   def destroy
-    sympathy = Sympathy.find_by(user_id: current_user.id, grumble_id: @grumble.id)
-    sympathy.destroy
+    @sympathy = Sympathy.find_by(user_id: current_user.id, grumble_id: @grumble.id)
+    @sympathy.destroy
     respond_to do |format|
       format.html { render nothing: true }
       format.js { render nothing: true }
