@@ -7,8 +7,8 @@ class CheersController < ApplicationController
   end
 
   def create
-    cheer = current_user.cheers.build(grumble_id: @grumble.id)
-    cheer.save
+    @cheer = Cheer.new(user_id: current_user.id, grumble_id: @grumble.id)
+    @cheer.save
     respond_to do |format|
       format.html { render nothing: true }
       format.js { render nothing: true }
@@ -16,8 +16,8 @@ class CheersController < ApplicationController
   end
 
   def destroy
-    cheer = Cheer.find_by(user_id: current_user, grumble_id: @grumble)
-    cheer.destroy
+    @cheer = Cheer.find_by(user_id: current_user, grumble_id: @grumble)
+    @cheer.destroy
     respond_to do |format|
       format.html { render nothing: true }
       format.js { render nothing: true }

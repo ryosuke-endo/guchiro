@@ -1,6 +1,6 @@
 class GrumblesController < ApplicationController
   skip_before_action :require_login, only: [:new, :show, :create, :tag_list]
-  before_action :find_hash_tag, only: [:create]
+  before_action :extract_hash_tag, only: [:create]
   before_action :set_user_grumble_cheers, only: [:new, :show]
   before_action :set_user_grumble_sympathies, only: [:new, :show]
 
@@ -51,7 +51,7 @@ class GrumblesController < ApplicationController
     @user_grumble_sympathies = current_user.grumble_sympathies if current_user
   end
 
-  def find_hash_tag
+  def extract_hash_tag
     body = params[:grumble][:body]
     filter = /[#＃][Ａ-Ｚａ-ｚA-Za-z一-鿆0-9０-９ぁ-ヶｦ-ﾟー]+/
     @grumble_tags = body.scan(filter).map(&:strip)

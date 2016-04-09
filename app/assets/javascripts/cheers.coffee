@@ -38,13 +38,13 @@ $ ->
       type: 'POST'
       url: url
       id: grumble_id
-      success: ->
-        $(text).text(I18n.t('cheered'))
-        $(cheer_count).text(count)
-        $(change_class).removeClass('off')
-        $(change_class).addClass('on')
-      error: ->
-        $(text).text(I18n.t('fail'))
+    .done ->
+      $(text).text(I18n.t('cheered'))
+      $(cheer_count).text(count)
+      $(change_class).removeClass('off')
+      $(change_class).addClass('on')
+    .fail ->
+      $(text).text(I18n.t('fail'))
 
   off: (grumble_id) ->
     before_count = parseInt $(".cheer_count-#{grumble_id}").text()
@@ -61,10 +61,10 @@ $ ->
       type: 'DELETE'
       url: url
       id: grumble_id
-      success: ->
-        $(text).text(I18n.t('cheer'))
-        $(cheer_count).text(count)
-        $(change_class).removeClass('on')
-        $(change_class).addClass('off')
-      error: ->
-        $(text).text(I18n.t('fail'))
+    .done ->
+      $(text).text(I18n.t('cheer'))
+      $(cheer_count).text(count)
+      $(change_class).removeClass('on')
+      $(change_class).addClass('off')
+    .fail ->
+      $(text).text(I18n.t('fail'))
