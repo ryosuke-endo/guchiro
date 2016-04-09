@@ -11,7 +11,7 @@ $ ->
     noop = jQuery.noop
     switch cheer_switch
       when 'signin_required'
-        Cheer.redirect(grumble_id)
+        Cheer.redirect()
       when 'is-owner'
         noop
       when 'on'

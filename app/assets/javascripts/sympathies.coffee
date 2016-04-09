@@ -11,7 +11,7 @@ $ ->
     noop = jQuery.noop
     switch sympathy_switch
       when 'signin_required'
-        Sympathy.redirect(grumble_id)
+        Sympathy.redirect()
       when 'is-owner'
         noop
       when 'on'
