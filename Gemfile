@@ -26,10 +26,9 @@ gem 'bootstrap-sass'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # gem 'therubyracer', platforms: :ruby
-# Use Unicorn as the app server
-# gem 'unicorn'
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+
+# rack server
+gem 'unicorn'
 
 group :development, :test do
   gem 'sqlite3'
@@ -53,6 +52,10 @@ group :development do
   gem 'rack-mini-profiler'
   gem 'stackprof'
   gem 'bullet'
+  # deploy
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
 end
 
 group :production do
