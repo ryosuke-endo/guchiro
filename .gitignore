@@ -18,3 +18,7 @@
 
 # Igonre coverage directory
 coverage
+
+# Ignore database configuration
+/config/database.yml
+/config/secrets.yml
