@@ -1,21 +1,20 @@
-set :stage, :production
-user = 'mikami'
-ipaddress = '153.126.176.236'
-role :app, %W{#{user}@#{ipaddress}}
-role :web, %W{#{user}@#{ipaddress}}
-role :db, %W{#{user}@#{ipaddress}}
+set :port, 56781
+set :user, 'mikami'
+set :deploy_via, :remote_cache
+set :use_sudo, false
 
-server ipaddress,
-user: user,
-roles: %w{web app db},
-ssh_options: {
+server '153.126.176.236',
+  roles: [:web, :app, :db],
+  port: fetch(:port),
+  user: fetch(:user),
+  primary: true
+
+set :deploy_to, "/var/www/app/guchiro"
+
+set :ssh_options, {
   keys: %w(~/.ssh/id_rsa),
   forward_agent: true,
-},
-port: 56781
-# set :unicorn_pid, "/var/www/app/#{fetch(:application)}/shared/tmp/pids/unicorn.pid"
-# set :stage, :production # これいらないかも。
-# set :unicorn_rack_env, 'production'
-# set :unicorn_config_path, "/var/www/app/#{fetch(:application)}/current/config/unicorn.rb"
-# set :rails_env, 'production'
-# set :branch, 'master'
+}
+
+set :rails_env, :production
+set :conditionally_migrate, true
