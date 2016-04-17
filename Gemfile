@@ -45,7 +45,7 @@ group :development do
   gem 'meta_request'
   gem 'rack-mini-profiler'
   gem 'stackprof'
-  gem 'bullet'
+  # gem 'bullet'
   # deploy
   gem 'capistrano'
   gem 'capistrano-rails'
