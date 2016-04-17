@@ -6,7 +6,8 @@ set :repo_url, 'https://github.com/ryosuke-endo/guchiro.git'
 set :rbenv_type, :user
 set :rbenv_ruby, '2.2.3'
 ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
-
+set :log_level, :debug
+set :pty, true
 set :use_sudo, false
 set :bundle_binstubs, nil
 set :linked_files, %w{ config/secrets.yml }
