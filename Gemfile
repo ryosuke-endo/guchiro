@@ -20,13 +20,12 @@ gem 'i18n-js', '>= 3.0.0.rc11'
 gem 'coffee-rails', '~> 4.1.0'
 # css
 gem 'bootstrap-sass'
-
+gem 'mysql2', '~> 0.3.20'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # gem 'therubyracer', platforms: :ruby
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'byebug'
   gem 'pry-byebug'
   gem 'capybara'
@@ -56,6 +55,5 @@ group :development do
 end
 
 group :production do
-  gem 'pg', '0.17.1'
   gem 'unicorn'
 end
