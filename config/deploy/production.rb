@@ -4,7 +4,7 @@ set :deploy_via, :remote_cache
 set :use_sudo, false
 
 server '153.126.176.236',
-  roles: [:web, :app, :db],
+  roles: %w{ web app db },
   port: fetch(:port),
   user: fetch(:user),
   primary: true
