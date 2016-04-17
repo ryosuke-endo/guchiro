@@ -1,0 +1,19 @@
+current directory: /Users/mikami/rails/guchiro/vendor/bundle/ruby/2.2.0/gems/byebug-8.2.4/ext/byebug
+/Users/mikami/.rbenv/versions/2.2.3/bin/ruby -r ./siteconf20160418-7335-ogh3bz.rb extconf.rb
+creating Makefile
+
+current directory: /Users/mikami/rails/guchiro/vendor/bundle/ruby/2.2.0/gems/byebug-8.2.4/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /Users/mikami/rails/guchiro/vendor/bundle/ruby/2.2.0/gems/byebug-8.2.4/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /Users/mikami/rails/guchiro/vendor/bundle/ruby/2.2.0/gems/byebug-8.2.4/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.bundle ./.gem.20160418-7335-r3dink/byebug

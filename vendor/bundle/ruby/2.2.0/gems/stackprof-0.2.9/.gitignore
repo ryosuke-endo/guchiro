@@ -1,0 +1,4 @@
+/tmp
+/lib/stackprof.bundle
+/lib/stackprof.so
+*.sw?
