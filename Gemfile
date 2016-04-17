@@ -25,9 +25,6 @@ gem 'bootstrap-sass'
 # gem 'bcrypt', '~> 3.1.7'
 # gem 'therubyracer', platforms: :ruby
 
-# rack server
-gem 'unicorn'
-
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
@@ -59,7 +56,6 @@ group :development do
 end
 
 group :production do
-  gem 'pg',             '0.17.1'
-  gem 'rails_12factor', '0.0.2'
-  gem 'puma', '2.11.1'
+  gem 'pg', '0.17.1'
+  gem 'unicorn'
 end
