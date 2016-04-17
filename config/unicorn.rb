@@ -1,29 +1,53 @@
 # -*- coding: utf-8 -*-
-worker_processes 2
 
-listen  Dir.pwd + '/tmp/unicorn.sock'
-pid     Dir.pwd + '/tmp/unicorn.pid'
+# path
+app_path = '/var/www/app/guchiro'
+current_path = "#{app_path}/current"
+shared_path = "#{app_path}/shared"
 
-log = Dir.pwd + '/log/unicorn.log'
-stderr_path File.expand_path('log/unicorn.log', ENV['RAILS_ROOT'])
-stdout_path File.expand_path('log/unicorn.log', ENV['RAILS_ROOT'])
+working_directory current_path
+pid File.expand_path('tmp/pids/unicorn.pid', shared_path)
+listen File.expand_path('tmp/sockets/unicorn.sock', shared_path), backlog: 64
 
+# logging
+stderr_path "#{app_path}/shared/log/unicorn.stderr.log"
+stdout_path "#{app_path}/shared/log/unicorn.stdout.log"
+
+# preload
 preload_app true
-GC.respond_to?(:copy_on_write_friendly=) and GC.copy_on_write_friendly = true
+
+# Number of proccesse
+worker_processes 4
+
+# Time-out
+timeout 30
+
+# user correct Gemfile on restarts
+before_fork do |server|
+  ENV['BUNDLE_GEMFILE'] = "#{app_path}/current/Gemfile"
+end
 
 before_fork do |server, worker|
-defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
-
-old_pid = "#{ server.config[:pid] }.oldbin"
-unless old_pid == server.pid
-  begin
-   sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
-   Process.kill :QUIT, File.read(old_pid).to_i
-   rescue Errno::ENOENT, Errno::ESRCH
+  # the following is highly recomended for Rails + "preload_app true"
+  # as there's no need for the master process to hold a connection
+  if defined?(ActiveRecord::Base)
+    ActiveRecord::Base.connection.disconnect!
   end
-end
+
+  # Before forking, kill the master process that belongs to the .oldbin PID.
+  # This enables 0 downtime deploys.
+  old_pid = "#{server.config[:pid]}.oldbin"
+  if File.exists?(old_pid) && server.pid != old_pid
+    begin
+      Process.kill("QUIT", File.read(old_pid).to_i)
+    rescue Errno::ENOENT, Errno::ESRCH
+      # someone else did our job for us
+    end
+  end
 end
 
 after_fork do |server, worker|
-    defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
+  if defined?(ActiveRecord::Base)
+    ActiveRecord::Base.establish_connection
+  end
 end

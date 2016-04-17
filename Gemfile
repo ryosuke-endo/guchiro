@@ -16,10 +16,8 @@ gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'hover-rails'
 gem 'i18n-js', '>= 3.0.0.rc11'
-
 # assets
 gem 'coffee-rails', '~> 4.1.0'
-
 # css
 gem 'bootstrap-sass'
 
