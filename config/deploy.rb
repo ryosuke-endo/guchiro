@@ -32,13 +32,6 @@ set :pty, true
 # Default value for default_env is {}
 # set :default_env, { path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"}
 
-set :ssh_options, {
-  user: 'mikami',
-  keys: %w(~/.ssh/id_rsa),
-  forward_agent: false,
-  auth_methods: %w(publickey)
-}
-
 # test connection
 task :list do
   on roles(:app), in: :sequence do
