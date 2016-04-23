@@ -10,7 +10,9 @@ gem 'sorcery'
 gem 'font-awesome-rails'
 gem 'kaminari'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'config'
 gem 'meta-tags'
+gem 'google-analytics-rails'
 # javascript
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
@@ -20,6 +22,7 @@ gem 'i18n-js', '>= 3.0.0.rc11'
 gem 'coffee-rails', '~> 4.1.0'
 # css
 gem 'bootstrap-sass'
+# database
 gem 'mysql2', '~> 0.3.20'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
