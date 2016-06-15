@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  skip_before_action :require_login, only: [:index]
+  skip_before_action :require_login, only: %i(index)
   def index
     @tags = Grumble.tag_counts_on(:tags).order(taggings_count: :desc)
   end
